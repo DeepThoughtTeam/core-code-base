@@ -19,5 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^uidemo/', include('user_interface_demo.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^dashboard/', include('dashboard.urls')),
     url(r'^$', include('dashboard.urls')),
 ]
