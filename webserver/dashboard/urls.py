@@ -20,4 +20,5 @@ urlpatterns = [
     # url(r'^uidemo/', include('user_interface_demo.urls')),
     url(r'^$', 'dashboard.views.index', name='index'),
     url(r'^app-server/', 'dashboard.views.app_server', name='app_server'),
+    url(r'^send-net-info/', 'dashboard.views.proc_net_info', name='send_net_info'),
 ]
