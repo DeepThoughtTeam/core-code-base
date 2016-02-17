@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+</head>
+<body>
+  <div class="container">
+      <form class="form-signin" action="{% url 'django.contrib.auth.views.login' %}" method="post">
+        <fieldset>
+            {{form}}
+        </fieldset>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <input class="btn btn-lg btn-primary col-md-5" type="submit" value="Sign in">
+          <input type="hidden" name="next" value="{% url 'home' %}" />
+        <div class="col-md-2"></div>
+        <a href="{% url 'registration' %}" class="btn btn-lg btn-primary col-md-5" >New User?</a>
+        </div>
+        {% csrf_token %}
+      </form>
+    </div> <!-- /container -->
+</body>
+</html>

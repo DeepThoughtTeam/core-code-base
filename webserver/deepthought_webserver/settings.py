@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'user_interface_demo',
     'dashboard',
+    'nngarage',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,3 +105,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+LOGIN_URL = '/nngarage/login/'

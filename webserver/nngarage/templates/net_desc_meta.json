@@ -1,0 +1,5 @@
+{
+  "name": {{ net_desc_meta.name }},
+  "author_username": {{ net_desc_meta.author.username }},
+  "dateTime": {{ net_desc_meta.dateTime }}
+}

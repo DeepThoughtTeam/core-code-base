@@ -1,0 +1,12 @@
+{
+  "net_desc_metas": [
+    {% for net_desc_meta in net_desc_metas %}
+    {%spaceless%}
+    {% include 'net_desc_meta.json' %}
+    {%endspaceless%}
+    {% if not forloop.last %}
+      ,
+    {% endif %}
+    {% endfor %}
+  ]
+}
