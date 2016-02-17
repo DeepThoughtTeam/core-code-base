@@ -16,7 +16,8 @@ def proc_net_info(request):
     print "proc_net_info"
     print request.POST
     content = request.body
-    r_app = requests.get("http://legend02.pc.cc.cmu.edu:8000/run_net_proc")
+    print content
+    r_app = requests.post("http://legend02.pc.cc.cmu.edu:8000/run_net_proc", data=content)
     r = HttpResponse(r_app.text)
 
     return r
