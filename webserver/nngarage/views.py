@@ -6,12 +6,13 @@ from django.db import transaction
 from django.contrib.auth.models import User
 from models import Profile, NetDescription
 from django.contrib.auth import login, authenticate
+from django.core.urlresolvers import reverse
 
 
 # The homepage view
 @login_required
 def index(request):
-    return HttpResponse("This is the homepage placeholder for Neural Network Garage.")
+    return render(request, 'nngarage/onboard_test.html')
 
 
 @transaction.atomic
@@ -45,7 +46,8 @@ def registration(request):
     # Use the previous created user ins to login
     new_user = authenticate(username=data['username'], password=data['password1'])
     login(request, new_user)
-    return redirect(request('index'))  # redirect to the the homepage
+    return redirect(reverse('home'))  # redirect to the the homepage
+
 
 @login_required
 def get_nn_desc(request, username=""):

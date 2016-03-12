@@ -11,6 +11,20 @@ class UserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username", "email", "first_name", "last_name")
+        labels = {
+            'username': 'Username',
+            'email': 'Email',
+            'first_name': 'FirstName',
+            'last_name': 'LastName',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'placeholder': self.fields[field].label
+            })
 
     def clean(self):
         cleaned_data = super(UserCreationForm, self).clean()
@@ -87,7 +101,6 @@ class NetDescUploadForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(NetDescUploadForm, self).clean()
         return cleaned_data
-
 
     def clean_name(self):
         name = self.cleaned_data.get("name")
