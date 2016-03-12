@@ -16,6 +16,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
+<<<<<<< HEAD
     <option name="templateFileTypes">
       <list>
         <option value="HTML" />
@@ -24,6 +25,8 @@
         <option value="JSON" />
       </list>
     </option>
+=======
+>>>>>>> 7386605075d3c741d6eb3a07a7dea0e07a042bcf
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>

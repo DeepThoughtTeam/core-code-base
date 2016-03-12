@@ -39,7 +39,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'user_interface_demo',
     'dashboard',
+<<<<<<< HEAD
     'nngarage',
+=======
+<<<<<<< HEAD
+    'ui_service'
+=======
+>>>>>>> 3f517b840bfc64a74bcc00ffa58221111efe77c5
+>>>>>>> 7386605075d3c741d6eb3a07a7dea0e07a042bcf
 )
 
 MIDDLEWARE_CLASSES = (

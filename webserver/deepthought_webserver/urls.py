@@ -22,4 +22,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^dashboard/', include('dashboard.urls')),
     url(r'^$', include('dashboard.urls')),
+<<<<<<< HEAD
+    url(r'^uiservice/', include('ui_service.urls')),
+=======
+>>>>>>> 3f517b840bfc64a74bcc00ffa58221111efe77c5
 ]
