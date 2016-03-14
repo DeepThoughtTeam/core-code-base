@@ -9,10 +9,14 @@ Major items
 
 The config file is located at /etc/httpd/conf.d/django.conf at argonne.
 
-RESTful API:
+API Links:
 
-dashboard/app-server/ : sample api to connect to app server
+Current working: dashboard/app-server/ : sample api to connect to app server
 
-dashboard/sent-net-info/ : send net description to app server
+Not working: dashboard/sent-net-info/ : send net description to app server
 
-uidemo/ : display uidemo
+Current working: uidemo/ : display uidemo
+
+nngarage/ : start page for user authentication
+nngarage/login/ : user login link
+nngarage/signup/ : user signup link
