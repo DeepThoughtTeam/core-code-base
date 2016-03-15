@@ -74,3 +74,64 @@ def add_nn_desc(request):
         form.save()
 
         return render(request, 'nngarage/control_panel.html', context)
+
+@login_required
+def add_file(request, user_id=0):
+  if 'file' not in request.FILES or 'name' not in request.POST:
+    print "file post fail, lack name or file field"
+    raise Http404
+  file = request.FILES['file']
+  name = request.POST['name']
+
+  with transaction.atomic():
+      new_file = FileBase(file_content=file, file_name=name, file_type=0)
+      user_file = UserFile(user_id=user_id, file_id=new_file.pk)
+      new_file.save()
+      user_file.save()
+  return HttpResponse("OK")
+
+@login_required
+def get_exp_list(request):
+    return HttpResponse("OK")
+
+
+@login_required
+def get_exp_info(request):
+    return HttpResponse("OK")
+
+@login_required
+def run_exp(request):
+    ret = requests.post("http://localhost:5000/tensor/run", data={'id': 1, 'path': 'None', 'p1': 'a', 'p2': 'a', 'p1': 'a'})
+    if ret.status_code == 200:
+        return HttpResponse("OK")
+    raise Http404
+
+def upload_expriment_file(request):
+  if 'file' not in request.FILES or 'name' not in request.POST:
+    print "file post fail, lack name or file field"
+    raise Http404
+  file = request.FILES['file']
+  name = request.POST['name']
+  user_id = request.POT['id']
+
+  with transaction.atomic():
+      new_file = FileBase(file_content=file, file_name=name, file_type=1)
+      user_file = UserFile(user_id=user_id, file_id=new_file.pk)
+      new_file.save()
+      user_file.save()
+  return HttpResponse("OK")
+
+def download_file(request):
+  if request.method != 'GET':
+    raise Http404
+  o = FileBase.objects.get(file_name='testfile')
+  # filename = __file__ # Select your file here.
+  # wrapper = FileWrapper(file(filename))
+  # response = HttpResponse(wrapper, content_type='text/plain')
+  # response['Content-Length'] = os.path.getsize(filename)
+  # return response
+  file_data = open("/Users/amaliujia/virenv/mysite/mysite/media/files/1.png").read()
+  response = HttpResponse(file_data, content_type='application/force-download')
+  response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('1.png')
+  #response['X-Sendfile'] = smart_str("../mysite/media/files/1.png")
+  return response
