@@ -1,40 +1,45 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
 
 
-# Create your models here.
-class Profile(models.Model):
-    # Password field
-    password1 = models.CharField(max_length=100, default="", blank=True)
-    # Confirm Password field
-    password2 = models.CharField(max_length=100, default="", blank=True)
-    first_name = models.CharField(max_length=30, default="", blank=True)
-    last_name = models.CharField(max_length=30, default="", blank=True)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    image = models.ImageField(upload_to="profile-photos/%m/%d/%Y")
-
-
-class NetDescription(models.Model):
-    name = models.CharField(max_length=255, blank=False)
+# The core file model
+class FileBase(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
-    # For now, it is specified as JSON format
-    file_ins = models.FileField(upload_to="net_description/file/%m/%d/%Y")
-    # The screenshot for the neural network
-    screenshot = models.ImageField(upload_to="net_description/image/%m/%d/%Y")
-    dateTime = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100, blank=False)
+    type = models.CharField(max_length=30, blank=False)  # PARAM, MODEL, TRAIN_IN, TEST_IN, TRAIN_OUT, TEST_OUT
+    content = models.FileField(upload_to='files')  # include the path information
+
+
+class Task(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    name = models.CharField(max_length=30, blank=False)
+
+    train_in = models.OneToOneField(FileBase, related_name='train_in', on_delete=models.CASCADE)
+    train_out = models.OneToOneField(FileBase, related_name='train_out', on_delete=models.CASCADE)
+    test_in = models.OneToOneField(FileBase, related_name='test_in', on_delete=models.CASCADE)
+    test_out = models.OneToOneField(FileBase, related_name='test_out', on_delete=models.CASCADE)
+    # The file instance for the model
+    model = models.OneToOneField(FileBase, related_name='model', on_delete=models.CASCADE)
+    # The file instance for the parameter
+    parameter = models.OneToOneField(FileBase, related_name='parameter', on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now_add=True)
+    finish_time = models.DateTimeField(default='')
+    completed_status = models.CharField(max_length=30, default='Incompleted')
+
+    def __unicode__(self):
+        return u'%s %s %s' % (self.author, self.name, self.create_time)
 
     @staticmethod
-    def get_net_desc_meta(username):
-        author = User.objects.get(username=username)
-        nn_desc_meta = NetDescription.objects.filter(author=author).defer("file_ins")
-        return nn_desc_meta
+    def get_tasks(author):
+        return Task.objects.filter(author=author).order_by("create_time").reverse()
 
-
-
-
-
-
-
-
+    # format the task entry into html
+    def html(self):
+        format_str = "<tr> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td><a>%s</a></td> </tr>"
+        name = self.name
+        model_name = self.model.name
+        para_name = self.parameter.name
+        create_time = self.create_time
+        finish_time = self.finish_time
+        completed_status = self.completed_status
+        return format_str % (name, model_name, para_name, create_time, finish_time, completed_status)

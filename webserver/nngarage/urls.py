@@ -9,16 +9,12 @@ urlpatterns = [
     url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
 
     url(r'control-panel/$', 'nngarage.views.index', name='control_panel'),
-    url(r'get-nn-desc/(?P<username>[A-Za-z]\w*)/$', 'nngarage.views.get_nn_desc', name='get_nn_desc'),
-    url(r'upload-nn-desc/$', 'nngarage.views.add_nn_desc', name='add_nn_desc'),
+    # url(r'get-nn-desc/(?P<username>[A-Za-z]\w*)/$', 'nngarage.views.get_nn_desc', name='get_nn_desc'),
+    # url(r'upload-nn-desc/$', 'nngarage.views.add_nn_desc', name='add_nn_desc'),
 
     # TODO: password rest page
 
-    # File service
-    url(r'^add-file/$', 'fileservice.views.add_file'),
-    url(r'^file_download/$', 'fileservice.views.download_file'),
-    url(r'^tensorflow/exp/file$', 'fileservice.views.upload_expriment_file'),
-    url(r'^tensorflow/exp/run$', 'fileservice.views.run_exp'),
-    url(r'^tensorflow/exp/result$', 'fileservice.views.get_exp_info'),
+    # TODO: task related link
+    url(r'add-task', 'nngarage.views.add_task', name='add_task'),
 
 ]
