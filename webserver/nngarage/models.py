@@ -15,15 +15,15 @@ class Task(models.Model):
     name = models.CharField(max_length=30, blank=False)
 
     train_in = models.OneToOneField(FileBase, related_name='train_in', on_delete=models.CASCADE)
-    train_out = models.OneToOneField(FileBase, related_name='train_out', on_delete=models.CASCADE)
+    train_out = models.OneToOneField(FileBase, related_name='train_out', on_delete=models.CASCADE, null=True)
     test_in = models.OneToOneField(FileBase, related_name='test_in', on_delete=models.CASCADE)
-    test_out = models.OneToOneField(FileBase, related_name='test_out', on_delete=models.CASCADE)
+    test_out = models.OneToOneField(FileBase, related_name='test_out', on_delete=models.CASCADE, null=True)
     # The file instance for the model
-    model = models.OneToOneField(FileBase, related_name='model', on_delete=models.CASCADE)
+    model = models.OneToOneField(FileBase, related_name='model', on_delete=models.CASCADE, null=True)
     # The file instance for the parameter
     parameter = models.OneToOneField(FileBase, related_name='parameter', on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now_add=True)
-    finish_time = models.DateTimeField(default='')
+    finish_time = models.DateTimeField(auto_now_add=True)
     completed_status = models.CharField(max_length=30, default='Incompleted')
 
     def __unicode__(self):

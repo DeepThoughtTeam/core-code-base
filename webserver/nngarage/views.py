@@ -48,28 +48,42 @@ def registration(request):
 @login_required
 @transaction.atomic
 def add_task(request):
+    if request.method == 'GET':
+        return render(request, 'nngarage/task_creation.html')
+
+    context = {}
     if 'name' not in request.POST or not request.POST['name']:
-        print "Missing task name"
-        raise Http404
-    if 'model' not in request.FILE or not request.FILE['model']:
-        print "Missing model"
-        raise Http404
-    if 'parameter' not in request.FILE or not request.FILE['parameter']:
-        print "Missing parameter"
-        raise Http404
+        err = "Missing task name"
+        context['task_form_error'] = err
+        print err
+        return render(request, 'nngarage/task_creation.html', context=context)
+
+    if 'parameter' not in request.FILES or not request.FILES['parameter']:
+        err = "Missing task parameter"
+        context['task_form_error'] = err
+        print err
+        return render(request, 'nngarage/task_creation.html', context=context)
+
+    if 'train_in' not in request.FILES or not request.FILES['train_in']:
+        err = "Missing task training input"
+        context['task_form_error'] = err
+        print err
+        return render(request, 'nngarage/task_creation.html', context=context)
+
+    if 'test_in' not in request.FILES or not request.FILES['test_in']:
+        err = "Missing task test input"
+        context['task_form_error'] = err
+        print err
+        return render(request, 'nngarage/task_creation.html', context=context)
 
     # Initialize local variables
     task_name = request.POST['name']
-    model_file = request.FILE['model']
-    para_file = request.FILE['parameter']
-    train_in_file = request.FILE['train_in']
-    test_in = request.FILE['test_in']
+    para_file = request.FILES['parameter']
+    train_in_file = request.FILES['train_in']
+    test_in = request.FILES['test_in']
 
     # Initialize author variable
     author = User.objects.get(username=request.user.get_username())
-
-    model = FileBase(author=author, name=task_name + '\'s model', type='MODEL', content=model_file)
-    model.save()
 
     parameter = FileBase(author=author, name=task_name + '\'s parameter', type='PARAM', content=para_file)
     parameter.save()
@@ -80,10 +94,11 @@ def add_task(request):
     test_in = FileBase(author=author, name=task_name + '\'s test_in', type='TEST_IN', content=test_in)
     test_in.save()
 
-    task = Task(author=author, name=task_name, model=model, parameter=parameter, train_in=train_in, test_in=test_in)
+    task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
     task.save()
 
-    return HttpResponse('New task is added successfully.')
+    context['task_creation_status_feedback'] = "New task is added successfully."
+    return render(request, 'nngarage/control_panel.html', context)
 
 
 '''
