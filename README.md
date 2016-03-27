@@ -19,6 +19,3 @@ Current working: uidemo/ : display uidemo
 
 nngarage/ : start page for user authentication
 
-nngarage/login/ : user login link
-
-nngarage/signup/ : user signup link
