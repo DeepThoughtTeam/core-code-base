@@ -7,6 +7,7 @@ from models import *
 from django.contrib.auth import login, authenticate
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+import datetime
 
 
 # The homepage view
@@ -111,19 +112,58 @@ def get_tasks(request):
     return render(request, 'tasks.json', context, content_type='application/json')
 
 
-'''
-def download_file(request):
-    if request.method != 'GET':
-        raise Http404
-    o = FileBase.objects.get(file_name='testfile')
-    # filename = __file__ # Select your file here.
-    # wrapper = FileWrapper(file(filename))
-    # response = HttpResponse(wrapper, content_type='text/plain')
-    # response['Content-Length'] = os.path.getsize(filename)
-    # return response
-    file_data = open("/Users/amaliujia/virenv/mysite/mysite/media/files/1.png").read()
-    response = HttpResponse(file_data, content_type='application/force-download')
-    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('1.png')
-    # response['X-Sendfile'] = smart_str("../mysite/media/files/1.png")
-    return response
-'''
+@login_required
+@transaction.atomic
+def get_task_update(request):
+    if request.method == 'GET':
+        return HttpResponse("Get task update request should be POST.")
+
+    if 'token' not in request.POST or not request.POST['token']:
+        err = "Missing token"
+        return HttpResponse("Missing token")
+    elif request.POST['token'] == "lafyyjveotnehialteikeniotjim":
+        return HttpResponse("Token error!")
+
+    if 'username' not in request.POST or not request.POST['username']:
+        err = "Missing username"
+        return HttpResponse("Missing username")
+
+    if 'name' not in request.POST or not request.POST['name']:
+        err = "Missing task name"
+        return HttpResponse("Missing task name")
+
+    if 'model' not in request.FILES or not request.FILES['model']:
+        err = "Missing task model"
+        return HttpResponse("Missing task model")
+
+    if 'train_out' not in request.FILES or not request.FILES['train_out']:
+        err = "Missing task training output"
+        return HttpResponse("Missing task training output")
+
+    if 'test_out' not in request.FILES or not request.FILES['test_out']:
+        err = "Missing task test input"
+        return HttpResponse("Missing task test output")
+
+    task_name = request.POST['name']
+
+    train_out_file = request.FILES['train_out']
+    test_out_file = request.FILES['test_out']
+    model = request.FILES['model']
+
+    user_ins = User.objects.get(username=request.POST['username'])
+    task_ins = Task.objects.get(author=user_ins, name=task_name)
+
+    model = FileBase(author=user_ins, name=task_name + '\'s model', type='MODEL', content=model)
+    model.save()
+
+    train_out = FileBase(author=user_ins, name=task_name + '\'s train_out', type='TRAIN_OUT', content=train_out_file)
+    train_out.save()
+
+    test_out = FileBase(author=user_ins, name=task_name + '\'s test_out', type='TEST_OUT', content=test_out_file)
+    test_out.save()
+
+    task_ins.update(train_out=train_out, test_out=test_out, model=model, finish_time=datetime.datetime.now())
+
+    return HttpResponse("Task update successfully")
+
+
