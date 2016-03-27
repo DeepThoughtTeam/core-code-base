@@ -9,9 +9,14 @@ from django.contrib.auth.models import User
 import datetime
 from django.utils.encoding import smart_str
 from flask_driver import *
+<<<<<<< HEAD
 from django.http import HttpResponseRedirect
 import mimetypes
 
+=======
+import requests
+from django.views.decorators.csrf import csrf_exempt
+>>>>>>> 5f9b9658fb4471bdd84ec424b4f7fc2f91e8c44c
 
 # The homepage view
 @login_required
@@ -103,9 +108,17 @@ def add_task(request):
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
     task.save()
 
+<<<<<<< HEAD
     # r = run_exp(task_name, para_file, train_in_file, testfile)
     # if (r.status_code):
     #     raise Http404
+=======
+    user_name = request.user.username
+
+    r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name, request.FILES['test_in'].name)
+    if (r.status_code != 200):
+        raise Http404
+>>>>>>> 5f9b9658fb4471bdd84ec424b4f7fc2f91e8c44c
 
     context['task_creation_status_feedback'] = "New task is added successfully."
     return HttpResponseRedirect('/nngarage/')
@@ -176,6 +189,10 @@ def files(request):
     return "OK"
 
 
+<<<<<<< HEAD
+=======
+@csrf_exempt
+>>>>>>> 5f9b9658fb4471bdd84ec424b4f7fc2f91e8c44c
 @transaction.atomic
 def get_task_update(request):
     if request.method == 'GET':
@@ -184,7 +201,7 @@ def get_task_update(request):
     if 'token' not in request.POST or not request.POST['token']:
         err = "Missing token"
         return HttpResponse("Missing token")
-    elif request.POST['token'] == "lafyyjveotnehialteikeniotjim":
+    elif request.POST['token'] != "lafyyjveotnehialteikeniotjim":
         return HttpResponse("Token error!")
 
     if 'username' not in request.POST or not request.POST['username']:
@@ -227,13 +244,12 @@ def get_task_update(request):
 
     task_ins.update(train_out=train_out, test_out=test_out, model=model, finish_time=datetime.datetime.now())
 
-    return HttpResponse("Task update successfully")
+    return "Task update successfully"
 
 
 def exp_download(request):
     if request.method != 'GET' or "name" not in request.GET or not request.GET["name"]:
         raise Http404
-    # o = FileBase.objects.get(name='testfile')
     print "Request download_file: %s" % request.GET["name"]
     file_data = open("files/" + request.GET["name"]).read()
     response = HttpResponse(file_data, content_type='application/force-download')

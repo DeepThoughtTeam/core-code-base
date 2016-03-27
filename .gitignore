@@ -2,3 +2,4 @@
 /flask/demo/.meta
 /flask/demo/.log
 /flask/demo/checkpoint
+*.pyc

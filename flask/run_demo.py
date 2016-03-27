@@ -133,7 +133,8 @@ def run_mlp(
 def run_mlp_train(h_weights=[], it=10000, train="", o_dim=2, model_path="", weights_path="", output=""):
 	run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
 
-def run_mlp_test(h_weights=[], test="", model_path):
+def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
+	run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
 
 def main():
 	# # MNIST
