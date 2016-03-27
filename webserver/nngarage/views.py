@@ -107,12 +107,23 @@ def add_task(request):
     context['task_creation_status_feedback'] = "New task is added successfully."
     return render(request, 'nngarage/control_panel.html', context)
 
+
+@login_required
+@transaction.atomic
+def get_tasks(request):
+    username = request.user.username
+    tasks = Task.get_tasks(User.objects.get(username=username))
+    context = {"tasks": tasks}
+    print context
+    return render(request, 'tasks.json', context, content_type='application/json')
+
 def files(request):
     # print "files"
     # path = request.path
     # SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
     # print SITE_ROOT + path
     return "OK"
+
 
 def exp_download(request):
     if request.method != 'GET' or "name" not in request.GET or not request.GET["name"]:

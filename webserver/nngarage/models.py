@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.html import escape
 
 
 # The core file model
@@ -29,17 +30,19 @@ class Task(models.Model):
     def __unicode__(self):
         return u'%s %s %s' % (self.author, self.name, self.create_time)
 
+    def __str__(self):
+        return self.__unicode__()
+
     @staticmethod
     def get_tasks(author):
         return Task.objects.filter(author=author).order_by("create_time").reverse()
 
     # format the task entry into html
+    @property
     def html(self):
-        format_str = "<tr> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td><a>%s</a></td> </tr>"
-        name = self.name
-        model_name = self.model.name
-        para_name = self.parameter.name
-        create_time = self.create_time
-        finish_time = self.finish_time
-        completed_status = self.completed_status
-        return format_str % (name, model_name, para_name, create_time, finish_time, completed_status)
+        format_str = "<tr> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td></td> </tr>"
+        name = escape(self.name)
+        create_time = escape(self.create_time)
+        finish_time = escape(self.finish_time)
+        completed_status = escape(self.completed_status)
+        return format_str % (name, create_time, finish_time, completed_status)

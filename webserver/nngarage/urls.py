@@ -19,5 +19,7 @@ urlpatterns = [
 
     url(r'exp-download/$', 'nngarage.views.exp_download', name='exp_download'),
     url(r'files/$', 'nngarage.views.files'),
+    url(r'get-tasks', 'nngarage.views.get_tasks', name='get_tasks'),
+
 
 ]
