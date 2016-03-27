@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from forms import UserForm
 from django.db import transaction
@@ -9,15 +8,17 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 import datetime
 from django.utils.encoding import smart_str
-import os.path
 from flask_driver import *
-import requests
+from django.http import HttpResponseRedirect
+import mimetypes
 
 
 # The homepage view
 @login_required
 def index(request):
-    return render(request, 'nngarage/control_panel.html')
+    context = {}
+    context['username'] = request.user.username
+    return render(request, 'nngarage/control_panel.html', context)
 
 
 @transaction.atomic
@@ -90,24 +91,24 @@ def add_task(request):
     # Initialize author variable
     author = User.objects.get(username=request.user.get_username())
 
-    parameter = FileBase(author=author, name=task_name + '\'s parameter', type='PARAM', content=para_file)
+    parameter = FileBase(author=author, name=task_name + '_parameter', type='PARAM', content=para_file)
     parameter.save()
 
-    train_in = FileBase(author=author, name=task_name + '\'s train_in', type='TRAIN_IN', content=train_in_file)
+    train_in = FileBase(author=author, name=task_name + '_train_in', type='TRAIN_IN', content=train_in_file)
     train_in.save()
 
-    test_in = FileBase(author=author, name=task_name + '\'s test_in', type='TEST_IN', content=test_in)
+    test_in = FileBase(author=author, name=task_name + '_test_in', type='TEST_IN', content=test_in)
     test_in.save()
 
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
     task.save()
 
-    r = run_exp(task_name, para_file, train_in_file, testfile)
-    if (r.status_code):
-        raise Http404
+    # r = run_exp(task_name, para_file, train_in_file, testfile)
+    # if (r.status_code):
+    #     raise Http404
 
     context['task_creation_status_feedback'] = "New task is added successfully."
-    return render(request, 'nngarage/control_panel.html', context)
+    return HttpResponseRedirect('/nngarage/')
 
 
 @login_required
@@ -120,6 +121,53 @@ def get_tasks(request):
     return render(request, 'tasks.json', context, content_type='application/json')
 
 
+@login_required
+def get_task_detailed(request, task_name):
+    context = {}
+    # context['train_out_name'] = 'aa'
+    # context['test_out_name'] = 'bb'
+    # context['model_name'] = 'cc'
+    # return render(request, 'nngarage/task_inspection.html', context)
+    context['task_name'] = task_name
+    task_ins = Task.objects.get(name=task_name)
+
+    if task_ins.parameter != None:
+        context['para_name'] = task_ins.parameter.name
+
+    if task_ins.train_in != None:
+        context['train_in_name'] = task_ins.train_in.name
+
+    if task_ins.train_out != None:
+        context['train_out_name'] = task_ins.train_out.name
+
+    if task_ins.test_in != None:
+        context['test_in_name'] = task_ins.train_in.name
+
+    if task_ins.test_out != None:
+        context['test_out_name'] = task_ins.test_out.name
+
+    return render(request, 'nngarage/task_inspection.html', context)
+
+
+@login_required
+def get_file_dump(request, file_name):
+    file_ins = FileBase.objects.get(name=file_name)
+    print file_ins.content.name
+    data = ""
+    with open(file_ins.content.path, 'r') as myfile:
+        data = myfile.read()
+    return HttpResponse(data)
+
+
+@login_required
+def download_file(request, file_name):
+    file_ins = FileBase.objects.get(name=file_name)
+    file_data = open(file_ins.content.path).read()
+    response = HttpResponse(file_data, content_type='application/force-download')
+    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_ins.content.name)
+    return response
+
+
 def files(request):
     # print "files"
     # path = request.path
@@ -128,7 +176,6 @@ def files(request):
     return "OK"
 
 
-@login_required
 @transaction.atomic
 def get_task_update(request):
     if request.method == 'GET':
@@ -169,13 +216,13 @@ def get_task_update(request):
     user_ins = User.objects.get(username=request.POST['username'])
     task_ins = Task.objects.get(author=user_ins, name=task_name)
 
-    model = FileBase(author=user_ins, name=task_name + '\'s model', type='MODEL', content=model)
+    model = FileBase(author=user_ins, name=task_name + '_model', type='MODEL', content=model)
     model.save()
 
-    train_out = FileBase(author=user_ins, name=task_name + '\'s train_out', type='TRAIN_OUT', content=train_out_file)
+    train_out = FileBase(author=user_ins, name=task_name + '_train_out', type='TRAIN_OUT', content=train_out_file)
     train_out.save()
 
-    test_out = FileBase(author=user_ins, name=task_name + '\'s test_out', type='TEST_OUT', content=test_out_file)
+    test_out = FileBase(author=user_ins, name=task_name + '_test_out', type='TEST_OUT', content=test_out_file)
     test_out.save()
 
     task_ins.update(train_out=train_out, test_out=test_out, model=model, finish_time=datetime.datetime.now())

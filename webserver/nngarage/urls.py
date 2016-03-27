@@ -20,6 +20,13 @@ urlpatterns = [
     url(r'exp-download/$', 'nngarage.views.exp_download', name='exp_download'),
     url(r'files/$', 'nngarage.views.files'),
     url(r'get-tasks', 'nngarage.views.get_tasks', name='get_tasks'),
+    url(r'get-task-detailed-info/(?P<task_name>[A-Za-z]\w*)/$', 'nngarage.views.get_task_detailed',
+        name='get_task_detailed'),
 
+    url(r'get-file/(?P<file_name>[A-Za-z]\w*)/$', 'nngarage.views.get_file_dump',
+        name='get_file'),
+
+    url(r'download-file/(?P<file_name>[A-Za-z]\w*)/$', 'nngarage.views.download_file',
+        name='download_file'),
 
 ]
