@@ -12,7 +12,7 @@ from django.utils.encoding import smart_str
 import os.path
 from flask_driver import *
 import requests
-
+from django.views.decorators.csrf import csrf_exempt
 
 # The homepage view
 @login_required
@@ -102,8 +102,10 @@ def add_task(request):
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
     task.save()
 
+    user_name = request.user.username
+
     r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name, request.FILES['test_in'].name)
-    if (r.status_code):
+    if (r.status_code != 200):
         raise Http404
 
     context['task_creation_status_feedback'] = "New task is added successfully."
@@ -128,7 +130,7 @@ def files(request):
     return "OK"
 
 
-@login_required
+@csrf_exempt
 @transaction.atomic
 def get_task_update(request):
     if request.method == 'GET':
@@ -137,7 +139,7 @@ def get_task_update(request):
     if 'token' not in request.POST or not request.POST['token']:
         err = "Missing token"
         return HttpResponse("Missing token")
-    elif request.POST['token'] == "lafyyjveotnehialteikeniotjim":
+    elif request.POST['token'] != "lafyyjveotnehialteikeniotjim":
         return HttpResponse("Token error!")
 
     if 'username' not in request.POST or not request.POST['username']:
@@ -180,7 +182,7 @@ def get_task_update(request):
 
     task_ins.update(train_out=train_out, test_out=test_out, model=model, finish_time=datetime.datetime.now())
 
-    return HttpResponse("Task update successfully")
+    return "Task update successfully"
 
 
 def exp_download(request):
