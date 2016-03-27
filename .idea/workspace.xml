@@ -2,9 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bc5838-37c5-4dcd-94a9-860ebb4d7480" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/todo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/task.json" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/net_desc_meta.json" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/net_desc_metas.json" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/tasks.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html" afterPath="$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/__init__.py" afterPath="$PROJECT_DIR$/webserver/nngarage/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/admin.py" afterPath="$PROJECT_DIR$/webserver/nngarage/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/forms.py" afterPath="$PROJECT_DIR$/webserver/nngarage/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0001_initial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0002_auto_20160320_2249.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0002_auto_20160320_2249.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0003_auto_20160321_0029.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0003_auto_20160321_0029.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0004_auto_20160321_0030.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0004_auto_20160321_0030.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/__init__.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/models.py" afterPath="$PROJECT_DIR$/webserver/nngarage/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/font-awesome.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/font-awesome.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/graphic.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/graphic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/ie10-viewport-bug-workaround.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/ie10-viewport-bug-workaround.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/metisMenu.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/metisMenu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/morris.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/morris.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/sb-admin-2.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/sb-admin-2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/signinorup.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/signinorup.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/timeline.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/timeline.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/bootstrap.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/d3.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/d3.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/graphic.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/graphic.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie-emulation-modes-warning.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie-emulation-modes-warning.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie10-viewport-bug-workaround.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie10-viewport-bug-workaround.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/jquery.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/metisMenu.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/metisMenu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/sb-admin-2.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/sb-admin-2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/signup.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/signup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_inspection.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_inspection.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/tests.py" afterPath="$PROJECT_DIR$/webserver/nngarage/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/urls.py" afterPath="$PROJECT_DIR$/webserver/nngarage/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/views.py" afterPath="$PROJECT_DIR$/webserver/nngarage/views.py" />
     </list>
     <ignored path="deepthought-core-code-base.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +82,8 @@
           <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.43367347">
-                  <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
+                <state vertical-scroll-proportion="0.45918366">
+                  <caret line="18" column="108" selection-start-line="18" selection-start-column="108" selection-end-line="18" selection-end-column="108" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
@@ -69,7 +107,7 @@
             <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="127" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
+                  <caret line="130" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
                   <folding>
                     <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -102,9 +140,12 @@
             <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
+                  <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
                   <folding>
-                    <element signature="e#0#45#0" expanded="true" />
+                    <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
+                    <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
+                    <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
+                    <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -114,7 +155,7 @@
             <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+                  <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -138,9 +179,12 @@
             <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+                  <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
                   <folding>
-                    <element signature="e#0#45#0" expanded="true" />
+                    <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
+                    <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
+                    <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
+                    <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -149,8 +193,18 @@
           <file leaf-file-name="welcome.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7446808">
-                  <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.33510637">
+                  <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -192,8 +246,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
+    <option name="width" value="1436" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -221,6 +276,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -250,116 +306,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nngarage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nngarage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nngarage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nngarage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nngarage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nngarage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought-core-code-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deepthought_webserver" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -409,7 +355,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -642,10 +587,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="4" y="23" width="1436" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19170243" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19440459" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -775,9 +720,104 @@
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
+            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="59" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
+            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -786,6 +826,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -833,7 +874,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
+            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -850,6 +894,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -883,7 +928,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="11" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
+            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -902,6 +950,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -909,24 +958,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/net_desc_metas.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/net_desc_meta.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -947,13 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -967,7 +996,7 @@
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1005,7 +1034,7 @@
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
+          <caret line="130" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1023,8 +1052,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43367347">
-          <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
+        <state vertical-scroll-proportion="0.45918366">
+          <caret line="18" column="108" selection-start-line="18" selection-start-column="108" selection-end-line="18" selection-end-column="108" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -1034,17 +1063,28 @@
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
+            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
+            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7446808">
-          <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.33510637">
+          <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
           <folding />
         </state>
       </provider>

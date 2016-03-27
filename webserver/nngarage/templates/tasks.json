@@ -1,8 +1,8 @@
 {
-  "net_desc_metas": [
-    {% for net_desc_meta in net_desc_metas %}
+  "tasks": [
+    {% for task in tasks %}
     {%spaceless%}
-    {% include 'net_desc_meta.json' %}
+    {% include 'task.json' %}
     {%endspaceless%}
     {% if not forloop.last %}
       ,

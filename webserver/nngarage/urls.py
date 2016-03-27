@@ -17,4 +17,6 @@ urlpatterns = [
     # TODO: task related link
     url(r'add-task', 'nngarage.views.add_task', name='add_task'),
 
+    url(r'get-tasks', 'nngarage.views.get_tasks', name='get_tasks'),
+
 ]

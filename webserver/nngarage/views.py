@@ -101,6 +101,16 @@ def add_task(request):
     return render(request, 'nngarage/control_panel.html', context)
 
 
+@login_required
+@transaction.atomic
+def get_tasks(request):
+    username = request.user.username
+    tasks = Task.get_tasks(User.objects.get(username=username))
+    context = {"tasks": tasks}
+    print context
+    return render(request, 'tasks.json', context, content_type='application/json')
+
+
 '''
 def download_file(request):
     if request.method != 'GET':
