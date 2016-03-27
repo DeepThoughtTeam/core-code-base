@@ -20,7 +20,7 @@ def buildPath(filename, task_name, user_name):
 
 def file_manager(filename="", task_name="", user_name="", filepath="files/"):
     #SOURCE_URL = "http://argonne.pc.cc.cmu.edu:8000/nngarage/exp-download?name="
-    SOURCE_URL = "http://localhost:8000/nngarage/exp-download?name="
+    SOURCE_URL = "http://argonne.pc.cc.cmu.edu:80/nngarage/exp-download?name="
     # TODO:find file first
     # download_file
     target_file = buildPath(filename, task_name, user_name)
@@ -88,7 +88,7 @@ def run_exp(name="", user_name="", weights="", train="", test=""):
     # headers contains the necessary Content-Type and Content-Length
     # datagen is a generator object that yields the encoded parameters
     datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb")})
-    request = urllib2.Request("http://localhost:8000/nngarage/get-task-update", datagen, headers)
+    request = urllib2.Request("http://argonne.pc.cc.cmu.edu:80/nngarage/get-task-update", datagen, headers)
     # Actually do the request, and get the response
     urllib2.urlopen(request)
         # if 'token' not in request.POST or not request.POST['token']:
