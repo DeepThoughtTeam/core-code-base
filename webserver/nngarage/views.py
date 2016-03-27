@@ -8,6 +8,10 @@ from django.contrib.auth import login, authenticate
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 import datetime
+from django.utils.encoding import smart_str
+import os.path
+from flask_driver import *
+import requests
 
 
 # The homepage view
@@ -98,6 +102,10 @@ def add_task(request):
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
     task.save()
 
+    r = run_exp(task_name, para_file, train_in_file, testfile)
+    if (r.status_code):
+        raise Http404
+
     context['task_creation_status_feedback'] = "New task is added successfully."
     return render(request, 'nngarage/control_panel.html', context)
 
@@ -110,6 +118,14 @@ def get_tasks(request):
     context = {"tasks": tasks}
     print context
     return render(request, 'tasks.json', context, content_type='application/json')
+
+
+def files(request):
+    # print "files"
+    # path = request.path
+    # SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+    # print SITE_ROOT + path
+    return "OK"
 
 
 @login_required
@@ -167,3 +183,12 @@ def get_task_update(request):
     return HttpResponse("Task update successfully")
 
 
+def exp_download(request):
+    if request.method != 'GET' or "name" not in request.GET or not request.GET["name"]:
+        raise Http404
+    # o = FileBase.objects.get(name='testfile')
+    print "Request download_file: %s" % request.GET["name"]
+    file_data = open("files/" + request.GET["name"]).read()
+    response = HttpResponse(file_data, content_type='application/force-download')
+    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(request.GET["name"])
+    return response

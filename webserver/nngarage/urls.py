@@ -17,6 +17,9 @@ urlpatterns = [
     # TODO: task related link
     url(r'add-task', 'nngarage.views.add_task', name='add_task'),
 
+    url(r'exp-download/$', 'nngarage.views.exp_download', name='exp_download'),
+    url(r'files/$', 'nngarage.views.files'),
     url(r'get-tasks', 'nngarage.views.get_tasks', name='get_tasks'),
+
 
 ]
