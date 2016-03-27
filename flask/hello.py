@@ -90,7 +90,7 @@ def run_exp(name="", user_name="", weights="", train="", test=""):
     datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb")})
     request = urllib2.Request("http://localhost:8000/nngarage/get-task-update", datagen, headers)
     # Actually do the request, and get the response
-    print urllib2.urlopen(request).read()
+    urllib2.urlopen(request)
         # if 'token' not in request.POST or not request.POST['token']:
         # elif request.POST['token'] == "lafyyjveotnehialteikeniotjim":
         # if 'username' not in request.POST or not request.POST['username']:

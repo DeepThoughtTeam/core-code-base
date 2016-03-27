@@ -9,14 +9,10 @@ from django.contrib.auth.models import User
 import datetime
 from django.utils.encoding import smart_str
 from flask_driver import *
-<<<<<<< HEAD
 from django.http import HttpResponseRedirect
 import mimetypes
-
-=======
 import requests
 from django.views.decorators.csrf import csrf_exempt
->>>>>>> 5f9b9658fb4471bdd84ec424b4f7fc2f91e8c44c
 
 # The homepage view
 @login_required
@@ -108,17 +104,12 @@ def add_task(request):
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
     task.save()
 
-<<<<<<< HEAD
-    # r = run_exp(task_name, para_file, train_in_file, testfile)
-    # if (r.status_code):
-    #     raise Http404
-=======
+
     user_name = request.user.username
 
     r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name, request.FILES['test_in'].name)
     if (r.status_code != 200):
         raise Http404
->>>>>>> 5f9b9658fb4471bdd84ec424b4f7fc2f91e8c44c
 
     context['task_creation_status_feedback'] = "New task is added successfully."
     return HttpResponseRedirect('/nngarage/')
@@ -168,7 +159,7 @@ def get_file_dump(request, file_name):
     print file_ins.content.name
     data = ""
     with open(file_ins.content.path, 'r') as myfile:
-        data = myfile.read()
+        data = [i.replace('\n', '<br>') for i in myfile.readlines()]
     return HttpResponse(data)
 
 
@@ -182,17 +173,11 @@ def download_file(request, file_name):
 
 
 def files(request):
-    # print "files"
-    # path = request.path
-    # SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-    # print SITE_ROOT + path
     return "OK"
 
 
-<<<<<<< HEAD
-=======
+
 @csrf_exempt
->>>>>>> 5f9b9658fb4471bdd84ec424b4f7fc2f91e8c44c
 @transaction.atomic
 def get_task_update(request):
     if request.method == 'GET':
@@ -233,18 +218,29 @@ def get_task_update(request):
     user_ins = User.objects.get(username=request.POST['username'])
     task_ins = Task.objects.get(author=user_ins, name=task_name)
 
+    print task_ins
+
     model = FileBase(author=user_ins, name=task_name + '_model', type='MODEL', content=model)
     model.save()
-
+    print "model saved"
     train_out = FileBase(author=user_ins, name=task_name + '_train_out', type='TRAIN_OUT', content=train_out_file)
     train_out.save()
-
+    print "train file saved"
     test_out = FileBase(author=user_ins, name=task_name + '_test_out', type='TEST_OUT', content=test_out_file)
     test_out.save()
+    print "test file saved"
 
-    task_ins.update(train_out=train_out, test_out=test_out, model=model, finish_time=datetime.datetime.now())
+    task_ins.train_out = train_out
+    task_ins.test_out = test_out
+    task_ins.model = model
+    task_ins.finish_time = datetime.datetime.now()
+    task_ins.completed_status = "Completed"
 
-    return "Task update successfully"
+    task_ins.save()
+
+    # task_ins(train_out=train_out, test_out=test_out, model=model, finish_time=datetime.datetime.now())
+    print "update finish"
+    return HttpResponse("Task update successfully")
 
 
 def exp_download(request):
