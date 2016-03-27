@@ -100,7 +100,7 @@ def add_task(request):
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
     task.save()
 
-    r = run_exp(task_name, para_file, train_in_file, testfile)
+    r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name, request.FILES['test_in'].name)
     if (r.status_code):
         raise Http404
 
@@ -117,6 +117,7 @@ def get_tasks(request):
     print context
     return render(request, 'tasks.json', context, content_type='application/json')
 
+
 def files(request):
     # print "files"
     # path = request.path
@@ -128,7 +129,6 @@ def files(request):
 def exp_download(request):
     if request.method != 'GET' or "name" not in request.GET or not request.GET["name"]:
         raise Http404
-    # o = FileBase.objects.get(name='testfile')
     print "Request download_file: %s" % request.GET["name"]
     file_data = open("files/" + request.GET["name"]).read()
     response = HttpResponse(file_data, content_type='application/force-download')
