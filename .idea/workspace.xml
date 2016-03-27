@@ -2,47 +2,104 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bc5838-37c5-4dcd-94a9-860ebb4d7480" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/todo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/task.json" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/net_desc_meta.json" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/net_desc_metas.json" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/tasks.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/MNIST_data/t10k-images-idx3-ubyte.gz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/MNIST_data/t10k-labels-idx1-ubyte.gz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/MNIST_data/train-images-idx3-ubyte.gz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/MNIST_data/train-labels-idx1-ubyte.gz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/model.ckpt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/model.ckpt.meta" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/alexnet_benchmark.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/cnn_demo.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/error.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/input_data.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/output.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/run_demo.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/sample_train.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask/demo/weights.pckl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/deepthought_webserver/#settings.py#" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/nngarage/flask_driver.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/graphic.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/ie10-viewport-bug-workaround.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/metisMenu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/morris.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/sb-admin-2.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/signinorup.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/css/timeline.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/d3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/graphic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/ie-emulation-modes-warning.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/ie10-viewport-bug-workaround.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/metisMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/sb-admin-2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/static/nngarage/js/todo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/db.sqlite3" afterPath="$PROJECT_DIR$/webserver/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/fonts/Roboto-Bold-webfont.woff" afterPath="$PROJECT_DIR$/webserver/static/admin/fonts/Roboto-Bold-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/fonts/Roboto-Light-webfont.woff" afterPath="$PROJECT_DIR$/webserver/static/admin/fonts/Roboto-Light-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/fonts/Roboto-Regular-webfont.woff" afterPath="$PROJECT_DIR$/webserver/static/admin/fonts/Roboto-Regular-webfont.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html" afterPath="$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/__init__.py" afterPath="$PROJECT_DIR$/webserver/nngarage/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/admin.py" afterPath="$PROJECT_DIR$/webserver/nngarage/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/forms.py" afterPath="$PROJECT_DIR$/webserver/nngarage/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0002_auto_20160320_2249.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0002_auto_20160320_2249.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0003_auto_20160321_0029.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0003_auto_20160321_0029.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/0004_auto_20160321_0030.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/0004_auto_20160321_0030.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/migrations/__init__.py" afterPath="$PROJECT_DIR$/webserver/nngarage/migrations/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/models.py" afterPath="$PROJECT_DIR$/webserver/nngarage/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/font-awesome.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/font-awesome.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/graphic.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/graphic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/ie10-viewport-bug-workaround.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/ie10-viewport-bug-workaround.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/metisMenu.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/metisMenu.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/morris.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/morris.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/sb-admin-2.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/sb-admin-2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/signinorup.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/signinorup.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/timeline.css" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/css/timeline.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/bootstrap.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/d3.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/d3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/graphic.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/graphic.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie-emulation-modes-warning.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie-emulation-modes-warning.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie10-viewport-bug-workaround.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/ie10-viewport-bug-workaround.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/jquery.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/metisMenu.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/metisMenu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/sb-admin-2.js" afterPath="$PROJECT_DIR$/webserver/nngarage/static/nngarage/js/sb-admin-2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask/hello.py" afterPath="$PROJECT_DIR$/flask/hello.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/signup.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_inspection.html" afterPath="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_inspection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/tests.py" afterPath="$PROJECT_DIR$/webserver/nngarage/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/urls.py" afterPath="$PROJECT_DIR$/webserver/nngarage/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/nngarage/views.py" afterPath="$PROJECT_DIR$/webserver/nngarage/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/base.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/changelists.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/changelists.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/dashboard.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/dashboard.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/fonts.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/fonts.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/forms.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/forms.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/login.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/login.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/rtl.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/rtl.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/css/widgets.css" afterPath="$PROJECT_DIR$/webserver/static/admin/css/widgets.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/fonts/LICENSE.txt" afterPath="$PROJECT_DIR$/webserver/static/admin/fonts/LICENSE.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/fonts/README.txt" afterPath="$PROJECT_DIR$/webserver/static/admin/fonts/README.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/LICENSE" afterPath="$PROJECT_DIR$/webserver/static/admin/img/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/README.txt" afterPath="$PROJECT_DIR$/webserver/static/admin/img/README.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/calendar-icons.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/calendar-icons.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/gis/move_vertex_off.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/gis/move_vertex_off.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/gis/move_vertex_on.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/gis/move_vertex_on.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-addlink.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-addlink.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-alert.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-alert.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-calendar.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-calendar.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-changelink.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-changelink.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-clock.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-clock.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-deletelink.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-deletelink.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-no.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-no.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-unknown-alt.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-unknown-alt.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-unknown.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-unknown.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/icon-yes.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/icon-yes.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/inline-delete.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/inline-delete.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/search.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/search.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/selector-icons.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/selector-icons.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/sorting-icons.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/sorting-icons.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/tooltag-add.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/tooltag-add.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/img/tooltag-arrowright.svg" afterPath="$PROJECT_DIR$/webserver/static/admin/img/tooltag-arrowright.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/SelectBox.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/SelectBox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/SelectFilter2.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/SelectFilter2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/actions.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/actions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/actions.min.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/actions.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/admin/DateTimeShortcuts.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/admin/DateTimeShortcuts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/admin/RelatedObjectLookups.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/admin/RelatedObjectLookups.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/calendar.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/calendar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/collapse.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/collapse.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/collapse.min.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/collapse.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/core.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/inlines.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/inlines.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/inlines.min.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/inlines.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/jquery.init.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/jquery.init.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/prepopulate.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/prepopulate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/prepopulate.min.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/prepopulate.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/timeparse.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/timeparse.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/urlify.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/urlify.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/vendor/jquery/LICENSE-JQUERY.txt" afterPath="$PROJECT_DIR$/webserver/static/admin/js/vendor/jquery/LICENSE-JQUERY.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/vendor/jquery/jquery.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/vendor/jquery/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/vendor/jquery/jquery.min.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/vendor/jquery/jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" afterPath="$PROJECT_DIR$/webserver/static/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/static/admin/js/vendor/xregexp/xregexp.min.js" afterPath="$PROJECT_DIR$/webserver/static/admin/js/vendor/xregexp/xregexp.min.js" />
     </list>
     <ignored path="deepthought-core-code-base.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,143 +133,42 @@
     <favorites_list name="deepthought-core-code-base" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.45918366">
-                  <caret line="18" column="108" selection-start-line="18" selection-start-column="108" selection-end-line="18" selection-end-column="108" />
-                  <folding>
-                    <element signature="e#0#28#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#24#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="control_panel.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="130" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
-                  <folding>
-                    <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="task_creation_bug.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="59" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="59" selection-end-column="12" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="63" column="20" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
-                  <folding>
-                    <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
-                    <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
-                    <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
-                    <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="task_creation.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-                  <folding>
-                    <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
-                    <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
-                    <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
-                    <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="welcome.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.33510637">
-                  <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="15" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3118503">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/dashboard/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -234,9 +190,9 @@
         <option value="$PROJECT_DIR$/webserver/nngarage/urls.py" />
         <option value="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html" />
         <option value="$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html" />
-        <option value="$PROJECT_DIR$/webserver/nngarage/views.py" />
         <option value="$PROJECT_DIR$/webserver/nngarage/models.py" />
         <option value="$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html" />
+        <option value="$PROJECT_DIR$/webserver/nngarage/views.py" />
       </list>
     </option>
   </component>
@@ -276,7 +232,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -306,6 +261,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deepthought-core-code-base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deepthought-core-code-base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nngarage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -356,6 +329,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -590,14 +564,14 @@
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19440459" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20014347" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19053876" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33114323" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -654,171 +628,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="59" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="20" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding>
-            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
-            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="59" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="20" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
-          <folding>
-            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
-            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -826,7 +639,147 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="59" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="59" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/deepthought_webserver/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -844,9 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,10 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -865,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -873,12 +818,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding>
-            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
-            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -886,7 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -894,7 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -902,9 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,7 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,12 +861,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="11" />
-          <folding>
-            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
-            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -950,7 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -958,7 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,27 +912,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="1.1459755">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.45020464">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation_bug.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="1.2482369">
           <caret line="59" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="59" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1025,51 +947,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="1.3328632">
           <caret line="63" column="20" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/control_panel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="2.7503526">
           <caret line="130" column="42" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/nngarage/templates/nngarage/task_creation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.21156558">
           <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45918366">
-          <caret line="18" column="108" selection-start-line="18" selection-start-column="108" selection-end-line="18" selection-end-column="108" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding>
-            <marker date="1459029018000" expanded="true" signature="0:372" placeholder="import ..." />
-            <marker date="1459029018000" expanded="true" signature="430:488" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="537:1526" placeholder="..." />
-            <marker date="1459029018000" expanded="true" signature="1587:3649" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1077,14 +970,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/dashboard/templates/dashboard/welcome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33510637">
+        <state vertical-scroll-proportion="0.31029618">
           <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="15" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/dashboard/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/nngarage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3118503">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
