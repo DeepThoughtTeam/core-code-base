@@ -43,7 +43,6 @@ def update_data_flag(
 			for i in range(len(input_flag.teY)):
 				temp_te[i, input_flag.teY[i]] = 1
 			input_flag.teY = temp_te
-			print input_flag.teY
 	input_flag.input_dim = np.size(input_flag.teX, 1)
 
 def test_update():
@@ -66,12 +65,8 @@ def model(X, w_hs, w_o):
 '''
 def run_mlp(
 	hidden_weights = [12], 
-	lr = 0.0001, 
+	lr = 0.005, 
 	num_iter = 5, 
-	train_dir = "", 
-	hidden_weights = [12],
-	lr = 0.002,
-	num_iter = 5,
 	train_dir = "",
 	test_dir = "",
 	output_dim = 2,
@@ -123,9 +118,9 @@ def run_mlp(
 				sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
 			else:
 				sess.run(train_op, feed_dict={X: trX, Y: trY})
-			if i % (num_iter/100) == 0:
-				out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
-					sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
+			out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
+				sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
+			print sess.run(cost, feed_dict={X: trX, Y: trY})
 		# save session
 		saver.save(sess, saved_model_path)
 		# save weights as pickle
@@ -158,19 +153,12 @@ def main():
 	# output_file = "output.txt")
 
 	# XOR
-	hidden_weights = [6]
 
 	# train
 	run_mlp(
-		hidden_weights, 
-		num_iter = 3000, 
+		hidden_weights = [5,11,10,7], 
+		num_iter = 5000, 
 		train_dir = "circle_train.txt", 
-		output_dim = 2, 
-		mode = "train", 
-		saved_model_path = "model.ckpt", 
-		hidden_weights,
-		num_iter = 5000,
-		train_dir = "sample_train.txt",
 		output_dim = 2,
 		mode = "train",
 		saved_model_path = "model.ckpt",
@@ -180,10 +168,7 @@ def main():
 
 	# # test
 	# run_mlp(
-	# 	hidden_weights,
-	# 	test_dir = "circle_test.txt", 
-	# 	saved_model_path = "model.ckpt", 
-	# 	output_dim = 2, 
+	# 	hidden_weights = [6],
 	# 	test_dir = "sample_train.txt",
 	# 	saved_model_path = "model.ckpt",
 	# 	output_dim = 2,
