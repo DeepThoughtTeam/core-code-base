@@ -27,18 +27,23 @@ def update_data_flag(
 		mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
 	else:
 		if mode == "train":
-			train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=int)
+			train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
 			input_flag.trX, input_flag.trY = train_data[:, :-1], train_data[:, -1]
+			input_flag.trY.astype(int)
 			temp_tr = np.zeros((len(input_flag.trY), output_dim))
-			temp_tr[np.arange(len(input_flag.trY)), input_flag.trY] = 1
+			for i in range(len(input_flag.trY)):
+				temp_tr[i, input_flag.trY[i]] = 1
 			input_flag.trY = temp_tr
 			input_flag.teX, input_flag.teY = input_flag.trX, input_flag.trY
 		elif mode == "test":
-			test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=int)
+			test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
 			input_flag.teX, input_flag.teY = test_data[:, :-1], test_data[:, -1]
+			input_flag.teY.astype(int)
 			temp_te = np.zeros((len(input_flag.teY), output_dim))
-			temp_te[np.arange(len(input_flag.teY)), input_flag.teY] = 1
+			for i in range(len(input_flag.teY)):
+				temp_te[i, input_flag.teY[i]] = 1
 			input_flag.teY = temp_te
+			print input_flag.teY
 	input_flag.input_dim = np.size(input_flag.teX, 1)
 
 def test_update():
@@ -61,7 +66,7 @@ def model(X, w_hs, w_o):
 '''
 def run_mlp(
 	hidden_weights = [12], 
-	lr = 0.002, 
+	lr = 0.0001, 
 	num_iter = 5, 
 	train_dir = "", 
 	test_dir = "",
@@ -148,8 +153,8 @@ def main():
 	# train
 	run_mlp(
 		hidden_weights, 
-		num_iter = 5000, 
-		train_dir = "sample_train.txt", 
+		num_iter = 3000, 
+		train_dir = "circle_train.txt", 
 		output_dim = 2, 
 		mode = "train", 
 		saved_model_path = "model.ckpt", 
@@ -160,7 +165,7 @@ def main():
 	# # test
 	# run_mlp(
 	# 	hidden_weights,
-	# 	test_dir = "sample_train.txt", 
+	# 	test_dir = "circle_test.txt", 
 	# 	saved_model_path = "model.ckpt", 
 	# 	output_dim = 2, 
 	# 	mode = "test",
