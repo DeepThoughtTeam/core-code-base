@@ -43,6 +43,7 @@ def update_data_flag(
 			for i in range(len(input_flag.teY)):
 				temp_te[i, input_flag.teY[i]] = 1
 			input_flag.teY = temp_te
+			print input_flag.teY
 	input_flag.input_dim = np.size(input_flag.teX, 1)
 
 def test_update():
@@ -65,15 +66,15 @@ def model(X, w_hs, w_o):
 '''
 def run_mlp(
 	hidden_weights = [12], 
-	lr = 0.005, 
+	lr = 0.0001, 
 	num_iter = 5, 
-	train_dir = "",
+	train_dir = "", 
 	test_dir = "",
-	output_dim = 2,
+	output_dim = 2, 
 	saved_model_path = "model.ckpt",
 	saved_weights_path = "weights.pckl",
-	mode = "train",
-	output_file = "out_file",
+	mode = "train", 
+	output_file = "out_file", 
 	opt = "user_data"):
 
 	input_flag = INPUT_FLAG()
@@ -82,13 +83,13 @@ def run_mlp(
 		update_data_flag(input_flag, "", "", opt, output_dim)
 	else:
 		update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
-
+	
 	trX, trY, teX, teY, input_dim = input_flag.trX, input_flag.trY, \
 	input_flag.teX, input_flag.teY, input_flag.input_dim
-
+	
 	X = tf.placeholder("float", [None, input_dim])
 	Y = tf.placeholder("float", [None, output_dim])
-
+	
 	w_hs = []
 	w_hs.append(init_weights([input_dim, hidden_weights[0]]))
 	for i in xrange(len(hidden_weights)-1):
@@ -96,12 +97,12 @@ def run_mlp(
 
 	w_o = init_weights([hidden_weights[-1], output_dim])
 	py_x = model(X, w_hs, w_o)
-
+	
 	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))
 	# construct an optimizer, choice of learning rate
 	train_op = tf.train.RMSPropOptimizer(lr, 0.9).minimize(cost)
 	predict_op = tf.argmax(py_x, 1)
-
+	
 	saver = tf.train.Saver()
 	sess = tf.Session()
 	sess.run(tf.initialize_all_variables())
@@ -118,11 +119,11 @@ def run_mlp(
 				sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
 			else:
 				sess.run(train_op, feed_dict={X: trX, Y: trY})
-			out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
-				sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
-			print sess.run(cost, feed_dict={X: trX, Y: trY})
+			if i % (num_iter/100) == 0:
+				out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
+					sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
 		# save session
-		saver.save(sess, saved_model_path)
+		saver.save(sess, saved_model_path)   
 		# save weights as pickle
 		weights = sess.run(w_hs)
 		weights.append(sess.run(w_o))
@@ -134,44 +135,39 @@ def run_mlp(
 		raise ValueError('Unidentified Option!')
 	out.close()
 
-def run_mlp_train(h_weights=[], it=10000, train="", o_dim=2, model_path="", weights_path="", output=""):
-	run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
-
-def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
-	run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
-
 def main():
 	# # MNIST
 	# hidden_weights = [300, 65, 20]
 	# # train / test
 	# run_mlp(
-	# 	hidden_weights,
-	# 	num_iter = 5,
-	# 	mode = "test",
-	# 	opt = "mnist",
+	# 	hidden_weights, 
+	# 	num_iter = 5, 
+	# 	mode = "test", 
+	# 	opt = "mnist", 
 	# 	saved_model_path = "model.ckpt",
 	# output_file = "output.txt")
 
 	# XOR
-
+	hidden_weights = [6]
+	
 	# train
 	run_mlp(
-		hidden_weights = [5,11,10,7], 
-		num_iter = 5000, 
+		hidden_weights, 
+		num_iter = 3000, 
 		train_dir = "circle_train.txt", 
-		output_dim = 2,
-		mode = "train",
-		saved_model_path = "model.ckpt",
+		output_dim = 2, 
+		mode = "train", 
+		saved_model_path = "model.ckpt", 
 		saved_weights_path = "weights.pckl",
 		output_file = "output.txt"
 		)
 
 	# # test
 	# run_mlp(
-	# 	hidden_weights = [6],
-	# 	test_dir = "sample_train.txt",
-	# 	saved_model_path = "model.ckpt",
-	# 	output_dim = 2,
+	# 	hidden_weights,
+	# 	test_dir = "circle_test.txt", 
+	# 	saved_model_path = "model.ckpt", 
+	# 	output_dim = 2, 
 	# 	mode = "test",
 	# 	output_file = "output.txt"
 	# 	)
