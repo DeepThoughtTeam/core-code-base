@@ -1,0 +1,2 @@
+model_checkpoint_path: "deepbic_task4_model.ckpt"
+all_model_checkpoint_paths: "deepbic_task4_model.ckpt"

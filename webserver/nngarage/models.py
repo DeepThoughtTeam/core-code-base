@@ -45,4 +45,11 @@ class Task(models.Model):
         create_time = escape(self.create_time)
         finish_time = escape(self.finish_time)
         completed_status = escape(self.completed_status)
-        return format_str % (name, create_time, finish_time, completed_status)
+
+        completed_str = ""
+        if completed_status == "Completed":
+            # <a href="/nngarage/get-task-detailed-info/taks3">Completed</a>
+            completed_str = '<a href=\'/nngarage/get-task-detailed-info/' + name + '\'>Completed</a>'
+        else:
+            completed_str = "Incompleted"
+        return format_str % (name, create_time, finish_time, completed_str)
