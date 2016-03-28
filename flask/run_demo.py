@@ -65,17 +65,14 @@ def model(X, w_hs, w_o):
 	warning: when run XOR experiment, num_iter should be large
 '''
 def run_mlp(
-<<<<<<< HEAD:flask/demo/run_demo.py
 	hidden_weights = [12], 
 	lr = 0.0001, 
 	num_iter = 5, 
 	train_dir = "", 
-=======
 	hidden_weights = [12],
 	lr = 0.002,
 	num_iter = 5,
 	train_dir = "",
->>>>>>> 48042bcf68cce0c53a548db2fda8a1731d989fe3:flask/run_demo.py
 	test_dir = "",
 	output_dim = 2,
 	saved_model_path = "model.ckpt",
@@ -165,21 +162,18 @@ def main():
 
 	# train
 	run_mlp(
-<<<<<<< HEAD:flask/demo/run_demo.py
 		hidden_weights, 
 		num_iter = 3000, 
 		train_dir = "circle_train.txt", 
 		output_dim = 2, 
 		mode = "train", 
 		saved_model_path = "model.ckpt", 
-=======
 		hidden_weights,
 		num_iter = 5000,
 		train_dir = "sample_train.txt",
 		output_dim = 2,
 		mode = "train",
 		saved_model_path = "model.ckpt",
->>>>>>> 48042bcf68cce0c53a548db2fda8a1731d989fe3:flask/run_demo.py
 		saved_weights_path = "weights.pckl",
 		output_file = "output.txt"
 		)
@@ -187,15 +181,12 @@ def main():
 	# # test
 	# run_mlp(
 	# 	hidden_weights,
-<<<<<<< HEAD:flask/demo/run_demo.py
 	# 	test_dir = "circle_test.txt", 
 	# 	saved_model_path = "model.ckpt", 
 	# 	output_dim = 2, 
-=======
 	# 	test_dir = "sample_train.txt",
 	# 	saved_model_path = "model.ckpt",
 	# 	output_dim = 2,
->>>>>>> 48042bcf68cce0c53a548db2fda8a1731d989fe3:flask/run_demo.py
 	# 	mode = "test",
 	# 	output_file = "output.txt"
 	# 	)
