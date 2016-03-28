@@ -27,7 +27,10 @@ def update_data_flag(
 		mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
 	else:
 		if mode == "train":
-			train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+			try:
+				train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+			except:
+				train_data = np.loadtxt(open(train_dir,"rb"), delimiter=" ", dtype=float)
 			input_flag.trX, input_flag.trY = train_data[:, :-1], train_data[:, -1]
 			input_flag.trY.astype(int)
 			temp_tr = np.zeros((len(input_flag.trY), output_dim))
@@ -36,7 +39,10 @@ def update_data_flag(
 			input_flag.trY = temp_tr
 			input_flag.teX, input_flag.teY = input_flag.trX, input_flag.trY
 		elif mode == "test":
-			test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+			try:
+				test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+			except:
+				test_data = np.loadtxt(open(test_dir,"rb"), delimiter=" ", dtype=float)
 			input_flag.teX, input_flag.teY = test_data[:, :-1], test_data[:, -1]
 			input_flag.teY.astype(int)
 			temp_te = np.zeros((len(input_flag.teY), output_dim))
@@ -65,7 +71,7 @@ def model(X, w_hs, w_o):
 '''
 def run_mlp(
 	hidden_weights = [12], 
-	lr = 0.005, 
+	lr = 0.003, 
 	num_iter = 5, 
 	train_dir = "",
 	test_dir = "",
@@ -120,7 +126,7 @@ def run_mlp(
 				sess.run(train_op, feed_dict={X: trX, Y: trY})
 			out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
 				sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
-			print sess.run(cost, feed_dict={X: trX, Y: trY})
+			# print i,"'th loss: ",sess.run(cost, feed_dict={X: trX, Y: trY})
 		# save session
 		saver.save(sess, saved_model_path)
 		# save weights as pickle
@@ -156,9 +162,9 @@ def main():
 
 	# train
 	run_mlp(
-		hidden_weights = [5,11,10,7], 
+		hidden_weights = [5], 
 		num_iter = 5000, 
-		train_dir = "circle_train.txt", 
+		train_dir = "sample_train.txt", 
 		output_dim = 2,
 		mode = "train",
 		saved_model_path = "model.ckpt",
