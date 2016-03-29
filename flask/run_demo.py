@@ -6,7 +6,7 @@
 import tensorflow as tf
 import numpy as np
 import input_data
-import sys, pickle
+import sys, json
 
 class INPUT_FLAG:
 	def __init__(self):
@@ -89,7 +89,7 @@ def run_mlp(
 	test_dir = "",
 	output_dim = 2,
 	saved_model_path = "model.ckpt",
-	saved_weights_path = "weights.pckl",
+	saved_weights_path = "weights.json",
 	mode = "train",
 	output_file = "out_file",
 	opt = "user_data"):
@@ -134,11 +134,14 @@ def run_mlp(
 			# print i,"'th loss: ",sess.run(cost, feed_dict={X: trX, Y: trY})
 		# save session
 		saver.save(sess, saved_model_path)
-		# save weights as pickle
+		# save weights as json
 		weights = sess.run(w_hs)
 		weights.append(sess.run(w_o))
+		for i in range(len(weights)):
+			weights[i] = weights[i].tolist()
+		# print weights
 		with open(saved_weights_path, 'w') as f:
-			pickle.dump(weights, f)
+			json.dump({'weights':weights}, f)
 	else:
 		fsock = open('error.log', 'w')
 		sys.stderr = fsock
@@ -150,7 +153,7 @@ def run_mlp_train(h_weights=[], it=10000, train="", o_dim=2, model_path="", weig
 
 def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
 	run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
-
+	
 def main():
 	# # MNIST
 	# hidden_weights = [300, 65, 20]
@@ -167,13 +170,13 @@ def main():
 
 	# train
 	run_mlp(
-		hidden_weights = [12,8], 
-		num_iter = 500, 
+		hidden_weights = [3,5], 
+		num_iter = 10, 
 		train_dir = "sample_train.txt", 
 		output_dim = 2,
 		mode = "train",
 		saved_model_path = "model.ckpt",
-		saved_weights_path = "weights.pckl",
+		saved_weights_path = "weights.json",
 		output_file = "output.txt"
 		)
 
