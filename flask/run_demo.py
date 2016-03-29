@@ -51,19 +51,31 @@ def update_data_flag(
 			input_flag.teY = temp_te
 	input_flag.input_dim = np.size(input_flag.teX, 1)
 
-def test_update():
-	input_flag = INPUT_FLAG()
-	mode = "train"
-	update_data_flag(input_flag, train_dir = "sample_train.txt", output_dim = 2, mode = mode)
-
 def init_weights(shape):
     return tf.Variable(tf.random_normal(shape, stddev=0.01))
 
-def model(X, w_hs, w_o):
-    h = tf.nn.sigmoid(tf.matmul(X, w_hs[0]))
-    for w_h in w_hs[1:]:
-    	h = tf.nn.sigmoid(tf.matmul(h, w_h))
-    return tf.matmul(h, w_o)
+def model(X, input_dim, hidden_param, output_dim, activation_func = "relu"):
+	w_h, bias = [None] * len(hidden_param), [None] * (len(hidden_param) + 1)
+	w_h[0] = init_weights([input_dim, hidden_param[0]])
+	bias[0] = init_weights([hidden_param[0]])
+	for i in range(1, len(hidden_param)):
+		w_h[i] = init_weights([hidden_param[i-1], hidden_param[i]])
+		bias[i] = init_weights([hidden_param[i]])
+	
+	w_o = init_weights([hidden_param[-1], output_dim])
+	bias[-1] = init_weights([output_dim])
+	
+	def activation(act_func, X, hidden_param, w_h, w_o, bias):
+		a = act_func(tf.matmul(X, w_h[0]) + bias[0])
+		for i in range(1, len(hidden_param)):
+			a = act_func(tf.matmul(a, w_h[i]) + bias[i])
+		return tf.matmul(a, w_o) + bias[-1]
+
+	if activation_func == "relu":
+		return (w_h, w_o, activation(tf.nn.relu, X, hidden_param, w_h, w_o, bias))
+	elif activation_func == "sigmoid":
+		return (w_h, w_o, activation(tf.nn.sigmoid, X, hidden_param, w_h, w_o, bias))
+
 
 
 '''
@@ -95,18 +107,11 @@ def run_mlp(
 	X = tf.placeholder("float", [None, input_dim])
 	Y = tf.placeholder("float", [None, output_dim])
 
-	w_hs = []
-	w_hs.append(init_weights([input_dim, hidden_weights[0]]))
-	for i in xrange(len(hidden_weights)-1):
-		w_hs.append(init_weights([hidden_weights[i], hidden_weights[i+1]]))
+	w_hs, w_o, activation = model(X, input_dim, hidden_weights, output_dim)
 
-	w_o = init_weights([hidden_weights[-1], output_dim])
-	py_x = model(X, w_hs, w_o)
-
-	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))
+	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(activation, Y))
 	# construct an optimizer, choice of learning rate
-	train_op = tf.train.RMSPropOptimizer(lr, 0.9).minimize(cost)
-	predict_op = tf.argmax(py_x, 1)
+	optimizer = tf.train.RMSPropOptimizer(lr, 0.9).minimize(cost)
 
 	saver = tf.train.Saver()
 	sess = tf.Session()
@@ -116,16 +121,16 @@ def run_mlp(
 	if mode == "test":
 		saver.restore(sess, saved_model_path)
 		out.write(str(np.mean(np.argmax(teY, axis=1) == \
-			sess.run(predict_op, feed_dict={X: teX, Y: teY}))))
+			sess.run(tf.argmax(activation, 1), feed_dict={X: teX, Y: teY}))))
 	elif mode == "train":
 		for i in range(num_iter):
 			if opt == "mnist" or opt == "MNIST":
 				for start, end in zip(range(0, len(trX), 50), range(50, len(trX), 50)):\
-				sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
+				sess.run(optimizer, feed_dict={X: trX[start:end], Y: trY[start:end]})
 			else:
-				sess.run(train_op, feed_dict={X: trX, Y: trY})
+				sess.run(optimizer, feed_dict={X: trX, Y: trY})
 			out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
-				sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
+				sess.run(tf.argmax(activation, 1), feed_dict={X: trX, Y: trY})))+"\n")
 			# print i,"'th loss: ",sess.run(cost, feed_dict={X: trX, Y: trY})
 		# save session
 		saver.save(sess, saved_model_path)
@@ -162,8 +167,8 @@ def main():
 
 	# train
 	run_mlp(
-		hidden_weights = [5], 
-		num_iter = 5000, 
+		hidden_weights = [12,8], 
+		num_iter = 500, 
 		train_dir = "sample_train.txt", 
 		output_dim = 2,
 		mode = "train",
