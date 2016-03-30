@@ -14,6 +14,7 @@ import mimetypes
 import requests
 from django.views.decorators.csrf import csrf_exempt
 
+
 # The homepage view
 @login_required
 def index(request):
@@ -83,11 +84,29 @@ def add_task(request):
         print err
         return render(request, 'nngarage/task_creation.html', context=context)
 
+    if 'learning_rate' not in request.POST or not request.POST['learning_rate']:
+        err = "Missing learning rate"
+        print err
+        return render(request, 'nngarage/task_creation.html', context=context)
+
+    if 'out_dim' not in request.POST or not request.POST['out_dim']:
+        err = "Missing output dimension"
+        print err
+        return render(request, 'nngarage/task_creation.html', context=context)
+
+    if 'num_iter' not in request.POST or not request.POST['num_iter']:
+        err = "Missing number of iteration"
+        print err
+        return render(request, 'nngarage/task_creation.html', context=context)
+
     # Initialize local variables
     task_name = request.POST['name']
     para_file = request.FILES['parameter']
     train_in_file = request.FILES['train_in']
     test_in = request.FILES['test_in']
+    learning_rate = float(request.POST['learning_rate'])
+    out_dim = int(request.POST['out_dim'])
+    num_iter = int(request.POST['num_iter'])
 
     # Initialize author variable
     author = User.objects.get(username=request.user.get_username())
@@ -101,9 +120,9 @@ def add_task(request):
     test_in = FileBase(author=author, name=task_name + '_test_in', type='TEST_IN', content=test_in)
     test_in.save()
 
-    task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in)
+    task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in,
+                learning_rate=learning_rate, out_dim=out_dim, num_iter=num_iter)
     task.save()
-
 
     user_name = request.user.username
     # Update on March 30
@@ -113,7 +132,8 @@ def add_task(request):
     # parameter_name = parameter.content.name
     # train_in_name = train_in.content.name
     # test_in_name = test_in.content.name
-    r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name, request.FILES['test_in'].name)
+    r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name,
+                request.FILES['test_in'].name, learning_rate=learning_rate, num_iter=num_iter, out_dim=out_dim)
     if (r.status_code != 200):
         raise Http404
 
@@ -156,6 +176,10 @@ def get_task_detailed(request, task_name):
     if task_ins.test_out != None:
         context['test_out_name'] = task_ins.test_out.name
 
+    context['learning_rate'] = task_ins.learning_rate
+    context['out_dim'] = task_ins.out_dim
+    context['num_iter'] = task_ins.num_iter
+
     return render(request, 'nngarage/task_inspection.html', context)
 
 
@@ -180,7 +204,6 @@ def download_file(request, file_name):
 
 def files(request):
     return "OK"
-
 
 
 @csrf_exempt
