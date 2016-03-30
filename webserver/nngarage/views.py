@@ -106,7 +106,13 @@ def add_task(request):
 
 
     user_name = request.user.username
-
+    # Update on March 30
+    # In order to fix bug related to confict file names
+    # Use the following file name instead of the file names in HTTP forms
+    # The format is 'files/file_name_and_extension'
+    # parameter_name = parameter.content.name
+    # train_in_name = train_in.content.name
+    # test_in_name = test_in.content.name
     r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name, request.FILES['test_in'].name)
     if (r.status_code != 200):
         raise Http404
