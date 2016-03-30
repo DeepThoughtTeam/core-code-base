@@ -148,7 +148,7 @@ def run_mlp(
 		raise ValueError('Unidentified Option!')
 	out.close()
 
-def run_mlp_train(h_weights=[], it=10000, train="", o_dim=2, model_path="", weights_path="", output=""):
+def run_mlp_train(h_weights=[], lr = 0.001, it=500, train="", o_dim=2, model_path="", weights_path="", output=""):
 	run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
 
 def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
