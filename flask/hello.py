@@ -29,17 +29,17 @@ def file_manager(filename="", task_name="", user_name="", filepath="files/"):
     return target_file
 
 # def run_mlp(
-# 	hidden_weights = [12],
-# 	lr = 0.002,
-# 	num_iter = 5,
-# 	train_dir = "",
-# 	test_dir = "",
-# 	output_dim = 2,
-# 	saved_model_path = "model.ckpt",
-# 	saved_weights_path = "weights.pckl",
-# 	mode = "train",
-# 	output_file = "out_file",
-# 	opt = "user_data"):
+#   hidden_weights = [12],
+#   lr = 0.002,
+#   num_iter = 5,
+#   train_dir = "",
+#   test_dir = "",
+#   output_dim = 2,
+#   saved_model_path = "model.ckpt",
+#   saved_weights_path = "weights.pckl",
+#   mode = "train",
+#   output_file = "out_file",
+#   opt = "user_data"):
 
 def parse_weights(filename):
     with open(filename, "r") as r:
@@ -53,7 +53,7 @@ def parse_weights(filename):
 
 
 # def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
-def run_exp(name="", user_name="", weights="", train="", test=""):
+def run_exp(name="", user_name="", weights="", train="", test="", learning_rate = 0.01, num_iter = 500, out_dim = 2):
     weights_path = file_manager(weights, name, user_name)
     train_path = file_manager(train, name, user_name)
     test_path = file_manager(test, name, user_name)
@@ -68,12 +68,13 @@ def run_exp(name="", user_name="", weights="", train="", test=""):
     train_output = buildPath("train_output.txt", name, user_name)
     test_output = buildPath("test_output.txt", name, user_name)
 
-    train_thread = Thread(target=run_mlp_train, args=(weights, 10000, train_path, 2, model_output, weights_output, train_output))
+
+    train_thread = Thread(target=run_mlp_train, args=(weights, learning_rate, num_iter, train_path, out_dim, model_output, weights_output, train_output))
     train_thread.start()
     train_thread.join()
 
     print "Start testing..."
-    test_thread = Thread(target=run_mlp_test, args=(weights, test_path, model_output, 2, test_output))
+    test_thread = Thread(target=run_mlp_test, args=(weights, test_path, model_output, out_dim, test_output))
     test_thread.start()
     test_thread.join()
 
