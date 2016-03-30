@@ -82,6 +82,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': 'postgres',
+    #    'USER': 'bicadmin',
+    #    'PASSWORD': '',
+    #    'HOST': 'localhost',
+    #    'PORT': '15213',
+    #}
 }
 
 
@@ -107,3 +115,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 LOGIN_URL = '/nngarage/login/'
+
+MEDIA_ROOT = '/home/deepbic/workspace/core-code-base/webserver/files'

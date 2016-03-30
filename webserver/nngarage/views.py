@@ -196,6 +196,20 @@ def get_task_update(request):
     if 'name' not in request.POST or not request.POST['name']:
         err = "Missing task name"
         return HttpResponse("Missing task name")
+    
+    task_name = request.POST['name']
+
+    if 'status' not in request.POST or not request.POST['status']:
+        err = "Missing status"
+        return HttpResponse("Missing status")
+    
+    user_ins = User.objects.get(username=request.POST['username'])
+    task_ins = Task.objects.get(author=user_ins, name=task_name)
+
+    if request.POST['status'] == 'Failed':
+        task_ins.completed_status = "Failed"
+        task_ins.save()
+        return HttpResponse("Task update successfully")
 
     if 'model' not in request.FILES or not request.FILES['model']:
         err = "Missing task model"
@@ -209,14 +223,10 @@ def get_task_update(request):
         err = "Missing task test input"
         return HttpResponse("Missing task test output")
 
-    task_name = request.POST['name']
-
+    
     train_out_file = request.FILES['train_out']
     test_out_file = request.FILES['test_out']
     model = request.FILES['model']
-
-    user_ins = User.objects.get(username=request.POST['username'])
-    task_ins = Task.objects.get(author=user_ins, name=task_name)
 
     print task_ins
 
@@ -247,7 +257,8 @@ def exp_download(request):
     if request.method != 'GET' or "name" not in request.GET or not request.GET["name"]:
         raise Http404
     print "Request download_file: %s" % request.GET["name"]
-    file_data = open("files/" + request.GET["name"]).read()
+    real_filename = "/home/deepbic/workspace/core-code-base/webserver/files/files/" + request.GET["name"] 
+    file_data = open(real_filename).read()
     response = HttpResponse(file_data, content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(request.GET["name"])
     return response
