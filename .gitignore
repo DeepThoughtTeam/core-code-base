@@ -3,3 +3,9 @@
 /flask/demo/.log
 /flask/demo/checkpoint
 *.pyc
+
+*.iml
+
+*.xml
+
+*.iml
