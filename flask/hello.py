@@ -66,7 +66,7 @@ def run_exp(name="", user_name="", weights="", train="", test=""):
     train_output = buildPath("train_output.txt", name, user_name)
     test_output = buildPath("test_output.txt", name, user_name)
 
-    train_thread = Thread(target=run_mlp_train, args=(weights, 10000, train_path, 2, model_output, weights_output, train_output))
+    train_thread = Thread(target=run_mlp_train, args=(weights, 5000, train_path, 2, model_output, weights_output, train_output))
     train_thread.start()
     train_thread.join()
 
@@ -107,5 +107,5 @@ def hello():
 
 if __name__ == "__main__":
 #    print file_manager("1.png", "tasks1", "user1")
-    app.run(host='legend02.pc.cc.cmu.edu', port=int("8000"))
+    app.run(host='legend02.pc.cc.cmu.edu', port=53026)
     #app.run(port=int("8000"))

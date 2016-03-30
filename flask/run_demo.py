@@ -120,7 +120,7 @@ def run_mlp(
 				sess.run(train_op, feed_dict={X: trX, Y: trY})
 			out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
 				sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
-			print sess.run(cost, feed_dict={X: trX, Y: trY})
+			#print sess.run(cost, feed_dict={X: trX, Y: trY})
 		# save session
 		saver.save(sess, saved_model_path)
 		# save weights as pickle
