@@ -6,7 +6,7 @@
 import tensorflow as tf
 import numpy as np
 import input_data
-import sys, pickle
+import sys, json
 
 class INPUT_FLAG:
 	def __init__(self):
@@ -27,7 +27,10 @@ def update_data_flag(
 		mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
 	else:
 		if mode == "train":
-			train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+			try:
+				train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+			except:
+				train_data = np.loadtxt(open(train_dir,"rb"), delimiter=" ", dtype=float)
 			input_flag.trX, input_flag.trY = train_data[:, :-1], train_data[:, -1]
 			input_flag.trY.astype(int)
 			temp_tr = np.zeros((len(input_flag.trY), output_dim))
@@ -36,7 +39,10 @@ def update_data_flag(
 			input_flag.trY = temp_tr
 			input_flag.teX, input_flag.teY = input_flag.trX, input_flag.trY
 		elif mode == "test":
-			test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+			try:
+				test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+			except:
+				test_data = np.loadtxt(open(test_dir,"rb"), delimiter=" ", dtype=float)
 			input_flag.teX, input_flag.teY = test_data[:, :-1], test_data[:, -1]
 			input_flag.teY.astype(int)
 			temp_te = np.zeros((len(input_flag.teY), output_dim))
@@ -45,19 +51,31 @@ def update_data_flag(
 			input_flag.teY = temp_te
 	input_flag.input_dim = np.size(input_flag.teX, 1)
 
-def test_update():
-	input_flag = INPUT_FLAG()
-	mode = "train"
-	update_data_flag(input_flag, train_dir = "sample_train.txt", output_dim = 2, mode = mode)
-
 def init_weights(shape):
     return tf.Variable(tf.random_normal(shape, stddev=0.01))
 
-def model(X, w_hs, w_o):
-    h = tf.nn.sigmoid(tf.matmul(X, w_hs[0]))
-    for w_h in w_hs[1:]:
-    	h = tf.nn.sigmoid(tf.matmul(h, w_h))
-    return tf.matmul(h, w_o)
+def model(X, input_dim, hidden_param, output_dim, activation_func = "relu"):
+	w_h, bias = [None] * len(hidden_param), [None] * (len(hidden_param) + 1)
+	w_h[0] = init_weights([input_dim, hidden_param[0]])
+	bias[0] = init_weights([hidden_param[0]])
+	for i in range(1, len(hidden_param)):
+		w_h[i] = init_weights([hidden_param[i-1], hidden_param[i]])
+		bias[i] = init_weights([hidden_param[i]])
+	
+	w_o = init_weights([hidden_param[-1], output_dim])
+	bias[-1] = init_weights([output_dim])
+	
+	def activation(act_func, X, hidden_param, w_h, w_o, bias):
+		a = act_func(tf.matmul(X, w_h[0]) + bias[0])
+		for i in range(1, len(hidden_param)):
+			a = act_func(tf.matmul(a, w_h[i]) + bias[i])
+		return tf.matmul(a, w_o) + bias[-1]
+
+	if activation_func == "relu":
+		return (w_h, w_o, activation(tf.nn.relu, X, hidden_param, w_h, w_o, bias))
+	elif activation_func == "sigmoid":
+		return (w_h, w_o, activation(tf.nn.sigmoid, X, hidden_param, w_h, w_o, bias))
+
 
 
 '''
@@ -65,13 +83,13 @@ def model(X, w_hs, w_o):
 '''
 def run_mlp(
 	hidden_weights = [12], 
-	lr = 0.005, 
+	lr = 0.003, 
 	num_iter = 5, 
 	train_dir = "",
 	test_dir = "",
 	output_dim = 2,
 	saved_model_path = "model.ckpt",
-	saved_weights_path = "weights.pckl",
+	saved_weights_path = "weights.json",
 	mode = "train",
 	output_file = "out_file",
 	opt = "user_data"):
@@ -89,18 +107,11 @@ def run_mlp(
 	X = tf.placeholder("float", [None, input_dim])
 	Y = tf.placeholder("float", [None, output_dim])
 
-	w_hs = []
-	w_hs.append(init_weights([input_dim, hidden_weights[0]]))
-	for i in xrange(len(hidden_weights)-1):
-		w_hs.append(init_weights([hidden_weights[i], hidden_weights[i+1]]))
+	w_hs, w_o, activation = model(X, input_dim, hidden_weights, output_dim)
 
-	w_o = init_weights([hidden_weights[-1], output_dim])
-	py_x = model(X, w_hs, w_o)
-
-	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))
+	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(activation, Y))
 	# construct an optimizer, choice of learning rate
-	train_op = tf.train.RMSPropOptimizer(lr, 0.9).minimize(cost)
-	predict_op = tf.argmax(py_x, 1)
+	optimizer = tf.train.RMSPropOptimizer(lr, 0.9).minimize(cost)
 
 	saver = tf.train.Saver()
 	sess = tf.Session()
@@ -110,36 +121,39 @@ def run_mlp(
 	if mode == "test":
 		saver.restore(sess, saved_model_path)
 		out.write(str(np.mean(np.argmax(teY, axis=1) == \
-			sess.run(predict_op, feed_dict={X: teX, Y: teY}))))
+			sess.run(tf.argmax(activation, 1), feed_dict={X: teX, Y: teY}))))
 	elif mode == "train":
 		for i in range(num_iter):
 			if opt == "mnist" or opt == "MNIST":
 				for start, end in zip(range(0, len(trX), 50), range(50, len(trX), 50)):\
-				sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
+				sess.run(optimizer, feed_dict={X: trX[start:end], Y: trY[start:end]})
 			else:
-				sess.run(train_op, feed_dict={X: trX, Y: trY})
+				sess.run(optimizer, feed_dict={X: trX, Y: trY})
 			out.write(str(i) + ": "+ str(np.mean(np.argmax(trY, axis=1) == \
-				sess.run(predict_op, feed_dict={X: trX, Y: trY})))+"\n")
-			#print sess.run(cost, feed_dict={X: trX, Y: trY})
+				sess.run(tf.argmax(activation, 1), feed_dict={X: trX, Y: trY})))+"\n")
+			# print i,"'th loss: ",sess.run(cost, feed_dict={X: trX, Y: trY})
 		# save session
 		saver.save(sess, saved_model_path)
-		# save weights as pickle
+		# save weights as json
 		weights = sess.run(w_hs)
 		weights.append(sess.run(w_o))
+		for i in range(len(weights)):
+			weights[i] = weights[i].tolist()
+		# print weights
 		with open(saved_weights_path, 'w') as f:
-			pickle.dump(weights, f)
+			json.dump({'weights':weights}, f)
 	else:
 		fsock = open('error.log', 'w')
 		sys.stderr = fsock
 		raise ValueError('Unidentified Option!')
 	out.close()
 
-def run_mlp_train(h_weights=[], it=10000, train="", o_dim=2, model_path="", weights_path="", output=""):
+def run_mlp_train(h_weights=[], lr = 0.001, it=500, train="", o_dim=2, model_path="", weights_path="", output=""):
 	run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
 
 def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
 	run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
-
+	
 def main():
 	# # MNIST
 	# hidden_weights = [300, 65, 20]
@@ -156,13 +170,13 @@ def main():
 
 	# train
 	run_mlp(
-		hidden_weights = [5,11,10,7], 
-		num_iter = 5000, 
-		train_dir = "circle_train.txt", 
+		hidden_weights = [3,5], 
+		num_iter = 10, 
+		train_dir = "sample_train.txt", 
 		output_dim = 2,
 		mode = "train",
 		saved_model_path = "model.ckpt",
-		saved_weights_path = "weights.pckl",
+		saved_weights_path = "weights.json",
 		output_file = "output.txt"
 		)
 

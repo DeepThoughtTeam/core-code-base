@@ -15,6 +15,10 @@ class Task(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     name = models.CharField(max_length=30, blank=False)
 
+    learning_rate = models.FloatField(blank=False)
+    num_iter = models.DecimalField(blank=False)
+    out_dim = models.DecimalField(blank=False)
+
     train_in = models.OneToOneField(FileBase, related_name='train_in', on_delete=models.CASCADE)
     train_out = models.OneToOneField(FileBase, related_name='train_out', on_delete=models.CASCADE, null=True)
     test_in = models.OneToOneField(FileBase, related_name='test_in', on_delete=models.CASCADE)

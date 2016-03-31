@@ -22,6 +22,18 @@
     <div class="form-group">
       <input type="file" name="parameter">
     </div>
+    <p class="lead">Learning rate</p>
+    <div class="form-group">
+      <input type="text" name="learning_rate">
+    </div>
+    <p class="lead">Number of iterations</p>
+    <div class="form-group">
+      <input type="text" name="num_iter">
+    </div>
+    <p class="lead">Output dimension</p>
+    <div class="form-group">
+      <input type="text" name="out_dim">
+    </div>
     <label class="control-label">Save Model:</label>
     <button type="submit" class="btn btn-default">Save</button>
     {% csrf_token %}

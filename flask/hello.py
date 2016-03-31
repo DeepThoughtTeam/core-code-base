@@ -29,7 +29,6 @@ def file_manager(filename="", task_name="", user_name="", filepath="files/"):
     print real_filename, target_file
     return target_file
 
-
 def parse_weights(filename):
     try: 
         with open(filename, "r") as r:
@@ -44,7 +43,7 @@ def parse_weights(filename):
         return None
 
 # def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
-def run_exp(name="", user_name="", weights="", train="", test=""):
+def run_exp(name="", user_name="", weights="", train="", test="", learning_rate = 0.01, num_iter = 500, out_dim = 2):
     weights_path = file_manager(weights, name, user_name)
     train_path = file_manager(train, name, user_name)
     test_path = file_manager(test, name, user_name)
@@ -66,12 +65,13 @@ def run_exp(name="", user_name="", weights="", train="", test=""):
     train_output = buildPath("train_output.txt", name, user_name)
     test_output = buildPath("test_output.txt", name, user_name)
 
-    train_thread = Thread(target=run_mlp_train, args=(weights, 5000, train_path, 2, model_output, weights_output, train_output))
+    train_thread = Thread(target=run_mlp_train, args=(weights, learning_rate, num_iter, train_path, out_dim, model_output, weights_output, train_output))
+
     train_thread.start()
     train_thread.join()
 
     print "Start testing..."
-    test_thread = Thread(target=run_mlp_test, args=(weights, test_path, model_output, 2, test_output))
+    test_thread = Thread(target=run_mlp_test, args=(weights, test_path, model_output, out_dim, test_output))
     test_thread.start()
     test_thread.join()
 
@@ -89,9 +89,12 @@ def run():
         weights = request.form["weights"]
         train = request.form["train"]
         test = request.form["test"]
+        learning_rate = request.form["learning_rate"] 
+        out_dim = request.form["out_dim"]
+        num_iter = request.form["num_iter"] 
         print test, train, weights, task_name
         try:
-          tensor_thread = Thread(target=run_exp, args=(task_name, user_name, weights, train, test))
+          tensor_thread = Thread(target=run_exp, args=(task_name, user_name, weights, train, test, learning_rate, num_iter, out_dim))
           tensor_thread.daemon = True
           tensor_thread.start()
         except:

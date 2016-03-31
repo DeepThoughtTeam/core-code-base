@@ -221,3 +221,4 @@ IOError: [Errno 2] No such file or directory: u'files/Bhiksha_Task3_model.ckpt'
 172.16.1.1 - - [29/Mar/2016 12:34:52] "POST /tensor/run HTTP/1.1" 200 -
 I tensorflow/core/common_runtime/local_device.cc:40] Local device intra op parallelism threads: 8
 I tensorflow/core/common_runtime/direct_session.cc:58] Direct session inter op parallelism threads: 8
+ * Running on http://legend02.pc.cc.cmu.edu:53026/ (Press CTRL+C to quit)
