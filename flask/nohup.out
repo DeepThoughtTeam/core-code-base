@@ -1,0 +1,224 @@
+ * Running on http://legend02.pc.cc.cmu.edu:8000/ (Press CTRL+C to quit)
+172.16.1.1 - - [27/Mar/2016 23:00:06] "POST /tensor/run HTTP/1.1" 200 -
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 138, in run_mlp_train
+    run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 30, in update_data_flag
+    train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2 0
+
+Exception in thread Thread-3:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 141, in run_mlp_test
+    run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 39, in update_data_flag
+    test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2
+
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "hello.py", line 79, in run_exp
+    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "status":"Completed"})
+IOError: [Errno 2] No such file or directory: u'files/Bhiksha_MyTask_model.ckpt'
+
+172.16.1.1 - - [27/Mar/2016 23:04:31] "POST /tensor/run HTTP/1.1" 200 -
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 138, in run_mlp_train
+    run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 30, in update_data_flag
+    train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2 0
+
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 141, in run_mlp_test
+    run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 39, in update_data_flag
+    test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2
+
+Exception in thread Thread-4:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "hello.py", line 79, in run_exp
+    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "status":"Completed"})
+IOError: [Errno 2] No such file or directory: u'files/Bhiksha_TASK1_model.ckpt'
+
+172.16.1.1 - - [27/Mar/2016 23:07:56] "POST /tensor/run HTTP/1.1" 200 -
+Exception in thread Thread-8:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 138, in run_mlp_train
+    run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 30, in update_data_flag
+    train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2 0
+
+Exception in thread Thread-9:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 141, in run_mlp_test
+    run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 39, in update_data_flag
+    test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2
+
+Exception in thread Thread-7:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "hello.py", line 79, in run_exp
+    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "status":"Completed"})
+IOError: [Errno 2] No such file or directory: u'files/laceyliu_taskzhu_model.ckpt'
+
+172.16.1.1 - - [27/Mar/2016 23:43:40] "GET / HTTP/1.1" 200 -
+172.16.1.1 - - [27/Mar/2016 23:43:40] "POST /tensor/run HTTP/1.1" 200 -
+I tensorflow/core/common_runtime/local_device.cc:40] Local device intra op parallelism threads: 8
+I tensorflow/core/common_runtime/direct_session.cc:58] Direct session inter op parallelism threads: 8
+172.16.1.1 - - [27/Mar/2016 23:57:42] "POST /tensor/run HTTP/1.1" 200 -
+172.16.1.1 - - [27/Mar/2016 23:59:34] "POST /tensor/run HTTP/1.1" 200 -
+Exception in thread Thread-16:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "hello.py", line 82, in run_exp
+    urllib2.urlopen(request)
+  File "/usr/lib64/python2.7/urllib2.py", line 154, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib64/python2.7/urllib2.py", line 437, in open
+    response = meth(req, response)
+  File "/usr/lib64/python2.7/urllib2.py", line 550, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/usr/lib64/python2.7/urllib2.py", line 475, in error
+    return self._call_chain(*args)
+  File "/usr/lib64/python2.7/urllib2.py", line 409, in _call_chain
+    result = func(*args)
+  File "/usr/lib64/python2.7/urllib2.py", line 558, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 500: Internal Server Error
+
+172.16.1.1 - - [28/Mar/2016 09:41:26] "POST /tensor/run HTTP/1.1" 200 -
+Exception in thread Thread-20:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 138, in run_mlp_train
+    run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 30, in update_data_flag
+    train_data = np.loadtxt(open(train_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2 0
+
+Exception in thread Thread-21:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 141, in run_mlp_test
+    run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 84, in run_mlp
+    update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
+  File "/home/bicadmin/workspace-dt/core-code-base/flask/run_demo.py", line 39, in update_data_flag
+    test_data = np.loadtxt(open(test_dir,"rb"), delimiter=",", dtype=float)
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 928, in loadtxt
+    items = [conv(val) for (conv, val) in zip(converters, vals)]
+  File "/usr/lib64/python2.7/site-packages/numpy/lib/npyio.py", line 659, in floatconv
+    return float(x)
+ValueError: invalid literal for float(): 1 2
+
+Exception in thread Thread-19:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "hello.py", line 79, in run_exp
+    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "status":"Completed"})
+IOError: [Errno 2] No such file or directory: u'files/Bhiksha_Task3_model.ckpt'
+
+172.16.1.1 - - [28/Mar/2016 12:08:08] "GET / HTTP/1.1" 200 -
+ * Running on http://legend02.pc.cc.cmu.edu:53026/ (Press CTRL+C to quit)
+172.16.1.1 - - [29/Mar/2016 12:34:06] "GET / HTTP/1.1" 200 -
+172.16.1.1 - - [29/Mar/2016 12:34:52] "POST /tensor/run HTTP/1.1" 200 -
+I tensorflow/core/common_runtime/local_device.cc:40] Local device intra op parallelism threads: 8
+I tensorflow/core/common_runtime/direct_session.cc:58] Direct session inter op parallelism threads: 8
+ * Running on http://legend02.pc.cc.cmu.edu:53026/ (Press CTRL+C to quit)
