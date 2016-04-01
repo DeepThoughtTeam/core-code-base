@@ -1,7 +1,7 @@
 import requests
 from django.http import HttpResponse, Http404
 
-def run_exp(task_name="", user_name="", weights="", train="", test=""):
+def run_exp(task_name="", user_name="", weights="", train="", test="", learning_rate=0.01, out_dim=2, num_iter=10):
     SOURCE_URL = "http://legend02.pc.cc.cmu.edu:53026/tensor/run"
     # SOURCE_URL = "http://localhost:5001/tensor/run"
     params = {}
@@ -10,6 +10,10 @@ def run_exp(task_name="", user_name="", weights="", train="", test=""):
     params['weights'] = weights
     params['train'] = train
     params['test'] = test
+    # newly added
+    params['learning_rate'] = learning_rate
+    params['out_dim'] = out_dim
+    params['num_iter'] = num_iter
     print params
     r = requests.post(SOURCE_URL, data=params)
     return r

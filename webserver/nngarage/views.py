@@ -133,7 +133,7 @@ def add_task(request):
     # train_in_name = train_in.content.name
     # test_in_name = test_in.content.name
     r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name,
-                request.FILES['test_in'].name, learning_rate=learning_rate, num_iter=num_iter, out_dim=out_dim)
+                request.FILES['test_in'].name, learning_rate, num_iter, out_dim)
     if (r.status_code != 200):
         raise Http404
 
@@ -175,6 +175,9 @@ def get_task_detailed(request, task_name):
 
     if task_ins.test_out != None:
         context['test_out_name'] = task_ins.test_out.name
+
+    if task_ins.model != None:
+        context['model_name'] = task_ins.model.name
 
     context['learning_rate'] = task_ins.learning_rate
     context['out_dim'] = task_ins.out_dim

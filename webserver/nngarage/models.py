@@ -16,8 +16,8 @@ class Task(models.Model):
     name = models.CharField(max_length=30, blank=False)
 
     learning_rate = models.FloatField(blank=False)
-    num_iter = models.DecimalField(blank=False)
-    out_dim = models.DecimalField(blank=False)
+    num_iter = models.IntegerField(blank=False)
+    out_dim = models.IntegerField(blank=False)
 
     train_in = models.OneToOneField(FileBase, related_name='train_in', on_delete=models.CASCADE)
     train_out = models.OneToOneField(FileBase, related_name='train_out', on_delete=models.CASCADE, null=True)
