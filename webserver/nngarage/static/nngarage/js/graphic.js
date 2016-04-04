@@ -24,7 +24,7 @@ var currentObject = null;
 // set up SVG for D3
 //==========================
 var width  = 700,
-    height = 500,
+    height = 800,
     colors = d3.scale.category10();
 
 var shiftKey = false;
@@ -71,8 +71,8 @@ var brusher = d3.svg.brush()
           })
 
           //layers.push(cur_layer);
-          document.getElementById('view_select').innerHTML = '<p>'+flatLayer(cur_layer)+'<button onclick = "groupNodes(cur_layer)" >Group</button></p>';
-          document.getElementById('view_layers').innerHTML = JSON.stringify(layers, null, 1);
+          document.getElementById('view_select').innerHTML = '<p>'+flatLayer(cur_layer)+'<button type = "button" onclick = "groupNodes(cur_layer)" >Group</button></p>';
+          //document.getElementById('view_layers').innerHTML = JSON.stringify(layers, null, 1);
         }),
     brush = svg.append("g")
       .datum(function() { return {selected: false, previouslySelected: false}; })
@@ -99,7 +99,7 @@ function flatLayer(layer){
 function displayLayers(layers){
   str = "";
   for (var i = 0; i < layers.length; i++){
-    str += "<p>"+flatLayer(layers[i])+"<button onclick = 'setStart("+i+");'>Start</button><button onclick = 'setEnd("+i+");' >End</button><button onclick = 'deleteLayer("+i+");' >Delete</button></p>"
+    str += "<p>"+flatLayer(layers[i])+"<button type = 'button' onclick = 'setStart("+i+");'>Start</button><button type = 'button' onclick = 'setEnd("+i+");' >End</button><button onclick = 'deleteLayer("+i+");' >Delete</button></p>"
   }
   return str;
 }
@@ -123,7 +123,7 @@ function setStart(index){
 }
 function setEnd(index){
   endLayer = layers[index];
-  //FullyConnect(startLayer, endLayer);
+  FullyConnect(startLayer, endLayer);
 }
 
 
@@ -566,10 +566,11 @@ function keyup() {
 
 function generateLayers(){
   nodes = [];
+  links = [];
   cur_layer = [];
   layers = [];
   lastNodeId = 0;
-  content = document.getElementById('layers').value;
+  content = document.getElementById('gen_layers').value;
   if ( content.length < 2 || (!(content.startsWith('[') && content.endsWith(']')))){
     alert("invalid input!");
     return;
@@ -681,6 +682,13 @@ function FullyConnect(layerfrom, layerto) {
 
 }
 
+function saveModel(){
+    json_str = "{\"nodes\":" + JSON.stringify(nodes) + ", \"linkes\":"+JSON.stringify(links)+"}";
+    obj = JSON.parse(json_str);
+    document.getElementById("view_json").innerHTML = JSON.stringify(obj);
+    // to do...
+}
+
 // app starts here
 svg.on('mousedown', mousedown)
   .on('mousemove', mousemove)
@@ -691,12 +699,44 @@ svg.on('mousedown', mousedown)
   .on('keydown', keydown)
   .on('keyup', keyup);
 restart();
-d3.select('#layers')
-    .on("mouseover", function() {
-        currentObject = this;
-        d3.event.stopPropagation();
-    })
-    .on("mouseout", function() {
-        currentObject = null;
-        d3.event.stopPropagation();
-    });
+
+//input_ids = ['#gen_layers', '#learning_rate', '#num_iters', '#out_dim']
+
+
+d3.select('#gen_layers')
+        .on("mouseover", function() {
+            currentObject = this;
+            d3.event.stopPropagation();
+        })
+        .on("mouseout", function() {
+            currentObject = null;
+            d3.event.stopPropagation();
+        });
+
+d3.select('#learning_rate')
+        .on("mouseover", function() {
+            currentObject = this;
+            d3.event.stopPropagation();
+        })
+        .on("mouseout", function() {
+            currentObject = null;
+            d3.event.stopPropagation();
+        });
+d3.select('#num_iters')
+        .on("mouseover", function() {
+            currentObject = this;
+            d3.event.stopPropagation();
+        })
+        .on("mouseout", function() {
+            currentObject = null;
+            d3.event.stopPropagation();
+        });
+d3.select('#out_dim')
+        .on("mouseover", function() {
+            currentObject = this;
+            d3.event.stopPropagation();
+        })
+        .on("mouseout", function() {
+            currentObject = null;
+            d3.event.stopPropagation();
+        });
