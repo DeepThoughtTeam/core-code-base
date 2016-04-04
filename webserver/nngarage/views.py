@@ -125,7 +125,7 @@ def add_task(request):
     test_in.save()
 
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in,
-                learning_rate=learning_rate, out_dim=out_dim, num_iter=num_iter)
+                learning_rate=learning_rate, out_dim=out_dim, num_iter=num_iter, train_out=train_in, test_out=test_in, model=train_in)
     task.save()
 
     user_name = request.user.username

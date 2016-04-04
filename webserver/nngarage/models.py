@@ -20,12 +20,12 @@ class Task(models.Model):
     out_dim = models.IntegerField(blank=False)
 
     train_in = models.OneToOneField(FileBase, related_name='train_in', on_delete=models.CASCADE)
-    train_out = models.OneToOneField(FileBase, related_name='train_out', on_delete=models.CASCADE, null=True)
+    train_out = models.OneToOneField(FileBase, related_name='train_out', on_delete=models.CASCADE)
     test_in = models.OneToOneField(FileBase, related_name='test_in', on_delete=models.CASCADE)
-    test_out = models.OneToOneField(FileBase, related_name='test_out', on_delete=models.CASCADE, null=True)
+    test_out = models.OneToOneField(FileBase, related_name='test_out', on_delete=models.CASCADE)
     # The file instance for the model
-    model = models.OneToOneField(FileBase, related_name='model', on_delete=models.CASCADE, null=True)
     weights = models.OneToOneField(FileBase, related_name='weights', on_delete=models.CASCADE, null=True)
+    model = models.OneToOneField(FileBase, related_name='model', on_delete=models.CASCADE)
     # The file instance for the parameter
     parameter = models.OneToOneField(FileBase, related_name='parameter', on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now_add=True)
@@ -57,5 +57,5 @@ class Task(models.Model):
             completed_str = '<a href=\'/nngarage/get-task-detailed-info/' + name + '\'>Completed</a>'
         else:
             completed_str = completed_status
-        
+
         return format_str % (name, create_time, finish_time, completed_str)
