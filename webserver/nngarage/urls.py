@@ -30,4 +30,6 @@ urlpatterns = [
         name='download_file'),
 
     url(r'get-task-update', 'nngarage.views.get_task_update', name='get_task_update'),
+
+    url(r'get-weights/(?P<task_name>[A-Za-z]\w*)/(?P<layer_idx>(\d+))/(?P<inlayer_node_idx>(\d+))/$', 'nngarage.views.get_weights', name='get_weights'),
 ]

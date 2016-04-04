@@ -25,6 +25,7 @@ class Task(models.Model):
     test_out = models.OneToOneField(FileBase, related_name='test_out', on_delete=models.CASCADE, null=True)
     # The file instance for the model
     model = models.OneToOneField(FileBase, related_name='model', on_delete=models.CASCADE, null=True)
+    weights = models.OneToOneField(FileBase, related_name='weights', on_delete=models.CASCADE, null=True)
     # The file instance for the parameter
     parameter = models.OneToOneField(FileBase, related_name='parameter', on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now_add=True)

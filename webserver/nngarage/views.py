@@ -10,9 +10,10 @@ import datetime
 from django.utils.encoding import smart_str
 from flask_driver import *
 from django.http import HttpResponseRedirect
-import mimetypes
-import requests
 from django.views.decorators.csrf import csrf_exempt
+import pickle
+from django.utils import simplejson
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # The homepage view
@@ -155,6 +156,22 @@ def get_tasks(request):
 
 
 @login_required
+def get_weights(request, task_name, layer_idx, inlayer_node_idx):
+    try:
+        task_ins = Task.objects.get(name=task_name)
+        weights_path = task_ins.weights.content.path
+        x = pickle.load(open(weights_path, 'rb'))
+        mat = x[int(layer_idx) - 1]
+        col = mat[:, int(inlayer_node_idx)]
+        json_stuff = simplejson.dumps({"weights_4_single_node": col})
+        return HttpResponse(json_stuff, content_type="application/json")
+    except ObjectDoesNotExist:
+        HttpResponse("Task does not exist!")
+    except IndexError:
+        HttpResponse("Index out of bound!")
+
+
+@login_required
 def get_task_detailed(request, task_name):
     context = {}
     # context['train_out_name'] = 'aa'
@@ -189,6 +206,7 @@ def get_task_detailed(request, task_name):
     return render(request, 'nngarage/task_inspection.html', context)
 
 
+# Just for display the file dumped on the screen through the browser
 @login_required
 def get_file_dump(request, file_name):
     file_ins = FileBase.objects.get(name=file_name)
@@ -199,6 +217,7 @@ def get_file_dump(request, file_name):
     return HttpResponse(data)
 
 
+# download content as a file instead of file dump
 @login_required
 def download_file(request, file_name):
     file_ins = FileBase.objects.get(name=file_name)
@@ -231,13 +250,13 @@ def get_task_update(request):
     if 'name' not in request.POST or not request.POST['name']:
         err = "Missing task name"
         return HttpResponse("Missing task name")
-    
+
     task_name = request.POST['name']
 
     if 'status' not in request.POST or not request.POST['status']:
         err = "Missing status"
         return HttpResponse("Missing status")
-    
+
     user_ins = User.objects.get(username=request.POST['username'])
     task_ins = Task.objects.get(author=user_ins, name=task_name)
 
@@ -258,7 +277,6 @@ def get_task_update(request):
         err = "Missing task test input"
         return HttpResponse("Missing task test output")
 
-    
     train_out_file = request.FILES['train_out']
     test_out_file = request.FILES['test_out']
     model = request.FILES['model']
@@ -292,7 +310,7 @@ def exp_download(request):
     if request.method != 'GET' or "name" not in request.GET or not request.GET["name"]:
         raise Http404
     print "Request download_file: %s" % request.GET["name"]
-    real_filename = "/home/deepbic/workspace/core-code-base/webserver/files/files/" + request.GET["name"] 
+    real_filename = "/home/deepbic/workspace/core-code-base/webserver/files/files/" + request.GET["name"]
     file_data = open(real_filename).read()
     response = HttpResponse(file_data, content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(request.GET["name"])
