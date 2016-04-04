@@ -86,16 +86,19 @@ def add_task(request):
 
     if 'learning_rate' not in request.POST or not request.POST['learning_rate']:
         err = "Missing learning rate"
+        context['task_form_error'] = err
         print err
         return render(request, 'nngarage/task_creation.html', context=context)
 
     if 'out_dim' not in request.POST or not request.POST['out_dim']:
         err = "Missing output dimension"
+        context['task_form_error'] = err
         print err
         return render(request, 'nngarage/task_creation.html', context=context)
 
     if 'num_iter' not in request.POST or not request.POST['num_iter']:
         err = "Missing number of iteration"
+        context['task_form_error'] = err
         print err
         return render(request, 'nngarage/task_creation.html', context=context)
 
