@@ -19,6 +19,7 @@
 
 
 var nodes = [], lastNodeId = -1, links = [], layers = [];
+var params = [];
 var currentObject = null;
 //==========================
 // set up SVG for D3
@@ -99,13 +100,19 @@ function flatLayer(layer){
 function displayLayers(layers){
   str = "";
   for (var i = 0; i < layers.length; i++){
-    str += "<p>"+flatLayer(layers[i])+"<button type = 'button' onclick = 'setStart("+i+");'>Start</button><button type = 'button' onclick = 'setEnd("+i+");' >End</button><button onclick = 'deleteLayer("+i+");' >Delete</button></p>"
+    str += "<p>"+flatLayer(layers[i])+"<button onclick = 'setStart("+i+");'>Start</button><button onclick = 'setEnd("+i+");' >End</button><button onclick = 'deleteLayer("+i+");' >Delete</button></p>"
   }
   return str;
 }
 
 function groupNodes(layer){
-  layers.push(layer.slice());
+  var newLayer = layer.slice();
+  var layer_index = layers.length;
+  for (var i = 0; i < newLayer.length; i++){
+    newLayer[i]['node_index']= i;
+    newLayer[i]['layer_index']= layer_index;
+  }
+  layers.push(newLayer);
   document.getElementById('view_select').innerHTML = '';
   d3.selectAll('circle').style('stroke', function(d) {
             return d3.rgb(colors(d.id)).darker().toString();})
@@ -113,20 +120,87 @@ function groupNodes(layer){
   //document.getElementById('view_layers').innerHTML = JSON.stringify(layers, null, 1);
 }
 
-startLayer = [], endLayer = [];
+var startLayer = [], endLayer = [];
+var start_index = 0;
+var layer_pairs = {};
 function deleteLayer(index){
   layers.splice(index, 1);
+  for (var i = index+1; i < layers.length; i++){
+    for (var j = 0; j < layers[i].length; j++){
+        layers[i][j]['layer_index']--;
+    }
+  }
   document.getElementById('view_layers').innerHTML = displayLayers(layers);
 }
 function setStart(index){
+  if (index in layer_pairs){
+    alert("Invalid start layer! ");
+    return;
+  }
   startLayer = layers[index];
+  start_index = index;
 }
 function setEnd(index){
+  for (var start in layer_pairs){
+    if (layer_pairs[start] == index){
+        alert("Invalid end layer! ");
+        return;
+    }
+  }
   endLayer = layers[index];
   FullyConnect(startLayer, endLayer);
+  layer_pairs[start_index] = index;
 }
 
+var sequence = [];
+function isValidNetwork(){
+    if (layer_pairs.length == 0){
+        return false;
+    }
+    var keys = [];
+    for (var start in layer_pairs){
+        keys.push(start);
+    }
+    start_layers = [];
+    for (var i = 0; i < keys.length; i++){
+        var start = keys[i];
+        has_in = false;
+        for (var key in layer_pairs){
+            if (layer_pairs[key] == start){
+                has_in = true;
+                break;
+            }
+        }
+        if (!has_in){
+            start_layers.push(start);
+        }
+    }
+    if (start_layers.length != 1){
+        return false;
+    }
+    var first = start_layers[0], cur_start = first;
+    sequence.push(first);
+    while (cur_start in layer_pairs){
+        cur_start = layer_pairs[cur_start];
+        sequence.push(cur_start);
+    }
+    return sequence.length == layers.length;
+//    if (sequence.length != layers.length){
+//        return false;
+//    }else{
+//        return true;
+//    }
+}
 
+function reindex(sequence, layers){
+    for (var index = 0; index < sequence.length; index++){
+        cur_index = sequence[index];
+        for (var j = 0; j < layers[cur_index].length; j++){
+            layers[cur_index][j]['layer_index'] = index;
+        }
+        params.push(layers[cur_index].length);
+    }
+}
 //==========================
 // init D3 force layout
 //==========================
@@ -234,6 +308,7 @@ function restart() {
     .classed('selected', function(d) { return d === selected_link; })
     .style('marker-start', function(d) { return d.left ? 'url(#start-arrow)' : ''; })
     .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; })
+    .style('opacity', function(d){return d.opacity == 1 ? 1 : 0.5; })
     .on('mousedown', function(d) {
       if(d3.event.ctrlKey || d3.event.shiftKey) return;
       // select link
@@ -267,7 +342,7 @@ function restart() {
       return (d.selected)? 'red': d3.rgb(colors(d.id)).darker().toString();
     })
     .classed('reflexive', function(d) { return d.reflexive; })
-    .on('mouseover', function(d) {
+    .on('click', function(d) {
     //  if(!mousedown_node || d === mousedown_node) return;
       // enlarge target node
    //    d3.select(this).attr('transform', 'scale(1.1)');
@@ -280,22 +355,40 @@ function restart() {
           .style('background','white')
           .style('opacity', 9);
 
+      d3.selectAll('circle').style('opacity', .5);
+      d3.select(this).style('opacity', 1);
 
-      //tooltip.transition().style('opacity', .9);
+      for(var i = 0; i< links.length; i++){
+          if(links[i].target.id != d.id){
+              links[i].opacity = 0;
+          }
+      }
 
+      path = path.data(links);
+      path.style('opacity', function(l){return l.opacity == 1 ? 1 : 0.5; });
       var content = "id: " + d.id + "\n" + "px: " + d.x + "\n" + "py: " + d.y;
 
       tooltip.html(content)
              .style('left', (d3.event.pageX) + 'px')
              .style('top', (d3.event.pageY) + 'px');
+
     })
     .on('mouseout', function(d) {
     //  if(!mousedown_node || d === mousedown_node) return;
       // unenlarge target node
     //  d3.select(this).attr('transform', '');
+        d3.selectAll('circle').style('opacity', 1);
 
     //  tooltip.transition().style('opacity', 0);
         d3.select('div.tooltip').remove();
+
+        for(var i = 0; i< links.length; i++){
+          links[i].opacity = 1;
+        }
+
+        path = path.data(links);
+        path.style('opacity', function(l){return l.opacity == 1 ? 1 : 0.5; });
+
     })
     .on('mousedown', function(d) {
       if(d3.event.ctrlKey) return;
@@ -358,7 +451,7 @@ function restart() {
       if(link) {
         link[direction] = true;
       } else {
-        link = {source: source, target: target, left: false, right: false};
+        link = {source: source, target: target, left: false, right: false, opacity:1};
         link[direction] = true;
         links.push(link);
       }
@@ -401,6 +494,8 @@ function mousedown() {
 
   node.x = point[0];
   node.y = point[1];
+  node.layer = -1;
+  node.sequenceid = -1;
 
   // avoid overlap nodes
   for(var i = 0; i< nodes.length; i++){
@@ -582,42 +677,37 @@ function generateLayers(){
     len = parseInt(temp[i]);
     for (j = 0; j < len; j++){
       //node = {id: ++lastNodeId, reflexive: false};
-      node = {id: ++lastNodeId, reflexive: false, x:100+i*100, y:70+j*50};
+      node = {id: ++lastNodeId, reflexive: false, x:100+i*100, y:70+j*50, node_index: j, layer_index: i, opacity:1};
       nodes.push(node);
       cur_layer.push(node);
     }
     layers.push(cur_layer.slice());
     if (i > 0){
       FullyConnect(layers[i-1], layers[i]);
+      layer_pairs[i-1] = i;
     }
   }
 }
-
 
 function viz_network(temp){
   nodes = [];
   cur_layer = [];
   layers = [];
   lastNodeId = 0;
-//  content = document.getElementById('layers').value;
-//  if ( content.length < 2 || (!(content.startsWith('[') && content.endsWith(']')))){
-//    alert("invalid input!");
-//    return;
-//  }
-//  content = content.substring(1, content.length-1);
-//  temp = content.split(',')
+
   for (i = 0; i < temp.length; i++){
     cur_layer = [];
     len = parseInt(temp[i]);
     for (j = 0; j < len; j++){
       //node = {id: ++lastNodeId, reflexive: false};
-      node = {id: ++lastNodeId, reflexive: false, x:100+i*100, y:70+j*50};
+      node = {id: ++lastNodeId, reflexive: false, x:100+i*100, y:70+j*50, node_index: j, layer_index: i, opacity:1};
       nodes.push(node);
       cur_layer.push(node);
     }
     layers.push(cur_layer.slice());
     if (i > 0){
       FullyConnect(layers[i-1], layers[i]);
+      layer_pairs[i-1] = i;
     }
   }
 }
@@ -637,7 +727,8 @@ function createLinks(layer_source, layer_target){
               source : s,
               target : t,
               left : false,
-              right : true
+              right : true,
+              opacity:1
             });
         }
    }
@@ -681,14 +772,35 @@ function FullyConnect(layerfrom, layerto) {
   connect = 1;
 
 }
+function validateNetwork(){
+    if (isValidNetwork()){
+        alert("Valid!");
 
+    }else{
+        alert("Invalid!");
+    }
+    sequence =[];
+}
 function saveModel(){
-    json_str = "{\"nodes\":" + JSON.stringify(nodes) + ", \"linkes\":"+JSON.stringify(links)+"}";
-    obj = JSON.parse(json_str);
-    document.getElementById("view_json").innerHTML = JSON.stringify(obj);
+    if (!isValidNetwork()){
+        alert("Invalid network! ");
+        return;
+    }else{
+        reindex(sequence, layers);
+    }
+//    json_str = "{\"nodes\":" + JSON.stringify(nodes) + ", \"linkes\":"+JSON.stringify(links)+"}";
+//    obj = JSON.parse(json_str);
+//    document.getElementById("view_json").innerHTML = JSON.stringify(obj);
+    document.getElementById("view_json").innerHTML = flatParams();
     // to do...
 }
-
+function flatParams(){
+    var str = ""
+    for (var i = 0; i < params.length; i++){
+        str += params[i] + ","
+    }
+    return str.substring(0, str.length - 1);
+}
 // app starts here
 svg.on('mousedown', mousedown)
   .on('mousemove', mousemove)

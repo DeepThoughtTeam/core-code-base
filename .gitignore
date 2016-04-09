@@ -13,3 +13,9 @@
 *.xml
 
 .idea/workspace.xml
+
+*.xml
+
+*.xml
+
+*.sqlite3
