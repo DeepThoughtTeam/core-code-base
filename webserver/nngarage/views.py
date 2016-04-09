@@ -14,6 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 import pickle
 import json as simplejson
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.files.base import ContentFile
 
 
 # The homepage view
@@ -67,7 +68,8 @@ def add_task(request):
         print err
         return render(request, 'nngarage/task_creation.html', context=context)
 
-    if 'parameter' not in request.FILES or not request.FILES['parameter']:
+    # Update on April 9th, accept only form data
+    if 'parameter' not in request.POST or not request.POST['parameter']:
         err = "Missing task parameter"
         context['task_form_error'] = err
         print err
@@ -105,7 +107,7 @@ def add_task(request):
 
     # Initialize local variables
     task_name = request.POST['name']
-    para_file = request.FILES['parameter']
+    para_data = request.POST['parameter']
     train_in_file = request.FILES['train_in']
     test_in = request.FILES['test_in']
     learning_rate = float(request.POST['learning_rate'])
@@ -115,7 +117,9 @@ def add_task(request):
     # Initialize author variable
     author = User.objects.get(username=request.user.get_username())
 
-    parameter = FileBase(author=author, name=task_name + '_parameter', type='PARAM', content=para_file)
+    content = ContentFile(para_data)
+    parameter = FileBase(author=author, name=task_name + '_parameter', type='PARAM')
+    parameter.content.save(task_name + '_parameter.txt', content)
     parameter.save()
 
     train_in = FileBase(author=author, name=task_name + '_train_in', type='TRAIN_IN', content=train_in_file)
@@ -125,18 +129,17 @@ def add_task(request):
     test_in.save()
 
     task = Task(author=author, name=task_name, parameter=parameter, train_in=train_in, test_in=test_in,
-                learning_rate=learning_rate, out_dim=out_dim, num_iter=num_iter, train_out=train_in, test_out=test_in, model=train_in)
+                learning_rate=learning_rate, out_dim=out_dim, num_iter=num_iter, train_out=train_in, test_out=test_in,
+                model=train_in)
     task.save()
 
     user_name = request.user.username
-    # Update on March 30
-    # In order to fix bug related to confict file names
-    # Use the following file name instead of the file names in HTTP forms
-    # The format is 'files/file_name_and_extension'
-    # parameter_name = parameter.content.name
-    # train_in_name = train_in.content.name
-    # test_in_name = test_in.content.name
-    r = run_exp(task_name, user_name, request.FILES['parameter'].name, request.FILES['train_in'].name,
+
+    # Update on April 9th, 4:43pm
+    # use this filename to get the parameter file
+    para_file_name = parameter.content.name
+
+    r = run_exp(task_name, user_name, para_file_name, request.FILES['train_in'].name,
                 request.FILES['test_in'].name, learning_rate, num_iter, out_dim)
     if (r.status_code != 200):
         raise Http404
