@@ -138,6 +138,7 @@ def add_task(request):
     # Update on April 9th, 4:43pm
     # use this filename to get the parameter file
     para_file_name = parameter.content.name
+    para_file_name = para_file_name.split("/")[-1]
 
     r = run_exp(task_name, user_name, para_file_name, request.FILES['train_in'].name,
                 request.FILES['test_in'].name, learning_rate, num_iter, out_dim)
