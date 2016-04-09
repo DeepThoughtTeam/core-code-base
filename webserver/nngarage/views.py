@@ -12,7 +12,7 @@ from flask_driver import *
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 import pickle
-from django.utils import simplejson
+import json as simplejson
 from django.core.exceptions import ObjectDoesNotExist
 
 
