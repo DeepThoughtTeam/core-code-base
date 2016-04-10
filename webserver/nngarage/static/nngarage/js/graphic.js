@@ -398,7 +398,7 @@ function restart() {
                 return l.opacity == 1 ? 1 : 0.5;
             });
             //var content = "id: " + d.id + "\n" + "px: " + d.x + "\n" + "py: " + d.y;
-            var id = d.id;
+            var id = d.id-1;
             var content = "id: " + id + "\n" + "px: " + nodes[id]['node_index'] + "\n" + "py: " + nodes[id]['layer_index'];
             //  Placeholder to request weights info
             // var task_name = $( "#task_name" ).text();
@@ -731,7 +731,8 @@ function generateLayers() {
         stepy = height / (len + 2);
         for (j = 0; j < len; j++) {
             //node = {id: ++lastNodeId, reflexive: false};
-            node = {id: ++lastNodeId, reflexive: false, x: x0 + stepx, y: y0 + stepy, layer: i, sequenceid: j};
+            node = {id: ++lastNodeId, reflexive: false, x: x0 + stepx, y: y0 + stepy, layer: i, sequenceid: j, node_index:j, layer_index:i};
+
             nodes.push(node);
             cur_layer.push(node);
 
