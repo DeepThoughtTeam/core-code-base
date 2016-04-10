@@ -281,9 +281,19 @@ def get_task_update(request):
         err = "Missing task test input"
         return HttpResponse("Missing task test output")
 
+    if 'weights' not in request.FILES or not request.FILES['weights']:
+        err = "Missing task weights"
+        return HttpResponse("Missing task weights")
+
     train_out_file = request.FILES['train_out']
     test_out_file = request.FILES['test_out']
     model = request.FILES['model']
+
+    # Placeholder for adding the weights file
+    weights_file = request.FILES['weights']
+    weights = FileBase(author=user_ins, name=task_name + '_weights', type='WEIGHTS', content=model)
+    weights.save()
+
 
     print task_ins
 

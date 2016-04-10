@@ -117,7 +117,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 LOGIN_URL = '/nngarage/login/'
 
 # Deployment root path
-MEDIA_ROOT = '/home/deepbic/workspace/core-code-base/webserver/files'
+# MEDIA_ROOT = '/home/deepbic/workspace/core-code-base/webserver/files'
 
 # Development path
-# MEDIA_ROOT = '/Users/victorzhao/git/deepthought-core-code-base/webserver/files'
+MEDIA_ROOT = '/Users/victorzhao/git/deepthought-core-code-base/webserver/files'
