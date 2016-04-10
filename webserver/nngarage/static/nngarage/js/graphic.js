@@ -397,8 +397,9 @@ function restart() {
             path.style('opacity', function (l) {
                 return l.opacity == 1 ? 1 : 0.5;
             });
-            var content = "id: " + d.id + "\n" + "px: " + d.x + "\n" + "py: " + d.y;
-
+            //var content = "id: " + d.id + "\n" + "px: " + d.x + "\n" + "py: " + d.y;
+            var id = d.id;
+            var content = "id: " + id + "\n" + "px: " + nodes[id]['node_index'] + "\n" + "py: " + nodes[id]['layer_index'];
             //  Placeholder to request weights info
             // var task_name = $( "#task_name" ).text();
             // var inlayer_node_idx = d3.select(this).attr('node_index');
