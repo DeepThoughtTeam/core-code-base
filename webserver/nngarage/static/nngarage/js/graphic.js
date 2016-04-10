@@ -406,16 +406,14 @@ function restart() {
             var inlayer_node_idx = nodes[id]['node_index'];
             var layer_idx = nodes[id]['layer_index'];
             
-            $.get("get-weights" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/").done(function (data) {
-                var content = data;
-                tooltip.html(content)
-                .style('left', (d3.event.pageX) + 'px')
-                .style('top', (d3.event.pageY) + 'px');
+            var content;
+            $.get("get-weights/" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/").done(function (data) {
+                content = data;
             });
 
-            // tooltip.html(content)
-            //     .style('left', (d3.event.pageX) + 'px')
-            //     .style('top', (d3.event.pageY) + 'px');
+            tooltip.html(content)
+                .style('left', (d3.event.pageX) + 'px')
+                .style('top', (d3.event.pageY) + 'px');
 
         })
         .on('mouseout', function (d) {
