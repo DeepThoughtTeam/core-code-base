@@ -100,7 +100,7 @@ function flatLayer(layer){
 function displayLayers(layers){
   str = "";
   for (var i = 0; i < layers.length; i++){
-    str += "<p>"+flatLayer(layers[i])+"<button onclick = 'setStart("+i+");'>Start</button><button onclick = 'setEnd("+i+");' >End</button><button onclick = 'deleteLayer("+i+");' >Delete</button></p>"
+    str += "<p>"+flatLayer(layers[i])+"<button type = 'button' onclick = 'setStart("+i+");'>Start</button><button type = 'button' onclick = 'setEnd("+i+");' >End</button><button type = 'button' onclick = 'deleteLayer("+i+");' >Delete</button></p>"
   }
   return str;
 }
@@ -671,16 +671,28 @@ function generateLayers(){
     return;
   }
   content = content.substring(1, content.length-1);
-  temp = content.split(',')
+  var temp = content.split(',')
+  
+  
+  
+  var x0 = 0;
+  var stepx = width * 4 / 7 / (temp.length+2);
   for (i = 0; i < temp.length; i++){
+    var y0 = 0;
     cur_layer = [];
     len = parseInt(temp[i]);
+    
+    stepy = height / (len+2);
     for (j = 0; j < len; j++){
       //node = {id: ++lastNodeId, reflexive: false};
-      node = {id: ++lastNodeId, reflexive: false, x:100+i*100, y:70+j*50, node_index: j, layer_index: i, opacity:1};
+      node = {id: ++lastNodeId, reflexive: false, x:x0+stepx, y:y0+stepy, layer : i, sequenceid: j};
       nodes.push(node);
       cur_layer.push(node);
+      
+      y0 = y0+stepy;
+       
     }
+    x0 = x0+stepx;
     layers.push(cur_layer.slice());
     if (i > 0){
       FullyConnect(layers[i-1], layers[i]);
@@ -791,7 +803,7 @@ function saveModel(){
 //    json_str = "{\"nodes\":" + JSON.stringify(nodes) + ", \"linkes\":"+JSON.stringify(links)+"}";
 //    obj = JSON.parse(json_str);
 //    document.getElementById("view_json").innerHTML = JSON.stringify(obj);
-    document.getElementById("view_json").innerHTML = flatParams();
+    document.getElementById("view_json").value = flatParams();
     // to do...
 }
 function flatParams(){
@@ -844,6 +856,15 @@ d3.select('#num_iters')
             d3.event.stopPropagation();
         });
 d3.select('#out_dim')
+        .on("mouseover", function() {
+            currentObject = this;
+            d3.event.stopPropagation();
+        })
+        .on("mouseout", function() {
+            currentObject = null;
+            d3.event.stopPropagation();
+        });
+d3.select('#task_name')
         .on("mouseover", function() {
             currentObject = this;
             d3.event.stopPropagation();
