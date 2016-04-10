@@ -399,18 +399,23 @@ function restart() {
             });
             //var content = "id: " + d.id + "\n" + "px: " + d.x + "\n" + "py: " + d.y;
             var id = d.id;
-            var content = "id: " + id + "\n" + "px: " + nodes[id]['node_index'] + "\n" + "py: " + nodes[id]['layer_index'];
+            // var content = "id: " + id + "\n" + "layer_idx: " + nodes[id]['layer_index'] + "\n" + "node_idx: " + nodes[id]['node_index'];
             //  Placeholder to request weights info
-            // var task_name = $( "#task_name" ).text();
-            // var inlayer_node_idx = d3.select(this).attr('node_index');
-            // var layer_idx = d3.select(this).attr('layer_index')
-            // $.get("get-weights/" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/").done(function (data) {
-            //
-            // });
-
-            tooltip.html(content)
+            
+            var task_name = document.getElementById("task_name").value;
+            var inlayer_node_idx = nodes[id]['node_index'];
+            var layer_idx = nodes[id]['layer_index'];
+            
+            $.get("get-weights" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/").done(function (data) {
+                var content = data;
+                tooltip.html(content)
                 .style('left', (d3.event.pageX) + 'px')
                 .style('top', (d3.event.pageY) + 'px');
+            });
+
+            // tooltip.html(content)
+            //     .style('left', (d3.event.pageX) + 'px')
+            //     .style('top', (d3.event.pageY) + 'px');
 
         })
         .on('mouseout', function (d) {
