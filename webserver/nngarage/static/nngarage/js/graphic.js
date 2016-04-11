@@ -384,8 +384,9 @@ function restart() {
                 .style('background', 'white')
                 .style('opacity', 9);
 
-            d3.selectAll('circle').style('opacity', .5);
+            d3.selectAll('circle').style('opacity', .2);
             d3.select(this).style('opacity', 1);
+            d3.select(this).style('r', 15);
 
             for (var i = 0; i < links.length; i++) {
                 if (links[i].target.id != d.id) {
@@ -395,7 +396,7 @@ function restart() {
 
             path = path.data(links);
             path.style('opacity', function (l) {
-                return l.opacity == 1 ? 1 : 0.5;
+                return l.opacity == 1 ? 1 : 0.2;
             });
             //var content = "id: " + d.id + "\n" + "px: " + d.x + "\n" + "py: " + d.y;
             var id = d.id;
@@ -431,9 +432,9 @@ function restart() {
 
             path = path.data(links);
             path.style('opacity', function (l) {
-                return l.opacity == 1 ? 1 : 0.5;
+                return l.opacity == 1 ? 1 : 0.2;
             });
-
+            d3.select(this).style('r', 12);
         })
         .on('mousedown', function (d) {
             if (d3.event.ctrlKey) return;
