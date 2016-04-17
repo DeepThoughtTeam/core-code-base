@@ -78,12 +78,11 @@ def run_exp(name="", user_name="", weights="", train="", test="", learning_rate 
     test_thread.start()
     test_thread.join()
 
-    print "Testing done..."
     register_openers()
-    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "weights" : open(weights_path, "rb"), "status":"Completed"})
+    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "status":"Completed"})
     request = urllib2.Request("http://argonne.pc.cc.cmu.edu:80/nngarage/get-task-update", datagen, headers)
     # Actually do the request, and get the response
-    print urllib2.urlopen(request).read()
+    urllib2.urlopen(request)
 
 @app.route("/tensor/run", methods=['POST'])
 def run():
