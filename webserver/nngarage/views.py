@@ -114,6 +114,11 @@ def add_task(request):
     out_dim = int(request.POST['out_dim'])
     num_iter = int(request.POST['num_iter'])
 
+    with open("/home/deepbic/workspace/core-code-base/webserver/tmp_data.txt", 'w') as f:
+        f.write("out_dim=" + str(out_dim))
+        f.write("\n")
+        f.write("num_iter=" + str(num_iter))
+
     # Initialize author variable
     author = User.objects.get(username=request.user.get_username())
 
@@ -165,8 +170,8 @@ def get_weights(request, task_name, layer_idx, inlayer_node_idx):
         task_ins = Task.objects.get(name=task_name)
         weights_path = task_ins.weights.content.path
         x = pickle.load(open(weights_path, 'rb'))
-        mat = x[int(layer_idx) - 1]
-        col = mat[:, int(inlayer_node_idx)]
+        mat = x[int(layer_idx)]
+        col = mat[int(inlayer_node_idx)]
         json_stuff = simplejson.dumps({"weights_4_single_node": col})
         return HttpResponse(json_stuff, content_type="application/json")
     except ObjectDoesNotExist:
@@ -184,9 +189,13 @@ def get_task_detailed(request, task_name):
     # return render(request, 'nngarage/task_inspection.html', context)
     context['task_name'] = task_name
     task_ins = Task.objects.get(name=task_name)
-
+    
+    # Update on Apr. 17th
     if task_ins.parameter != None:
-        context['para_name'] = task_ins.parameter.name
+        data = ""
+        with open(task_ins.parameter.content.path, 'r') as myfile:
+            data = myfile.read() 
+        context['parameter'] = '[' + data + ']'
 
     if task_ins.train_in != None:
         context['train_in_name'] = task_ins.train_in.name
@@ -291,7 +300,7 @@ def get_task_update(request):
 
     # Placeholder for adding the weights file
     weights_file = request.FILES['weights']
-    weights = FileBase(author=user_ins, name=task_name + '_weights', type='WEIGHTS', content=model)
+    weights = FileBase(author=user_ins, name=task_name + '_weights', type='WEIGHTS', content=weights_file)
     weights.save()
 
 
@@ -311,6 +320,7 @@ def get_task_update(request):
     task_ins.test_out = test_out
     task_ins.model = model
     task_ins.finish_time = datetime.datetime.now()
+    task_ins.weights = weights
     task_ins.completed_status = "Completed"
 
     task_ins.save()
