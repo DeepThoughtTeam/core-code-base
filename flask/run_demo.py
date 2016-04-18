@@ -7,6 +7,7 @@ import tensorflow as tf
 import numpy as np
 import input_data
 import sys, json
+import pickle
 
 class INPUT_FLAG:
 	def __init__(self):
@@ -62,6 +63,8 @@ def model(X, input_dim, hidden_param, output_dim, activation_func = "relu"):
 		w_h[i] = init_weights([hidden_param[i-1], hidden_param[i]])
 		bias[i] = init_weights([hidden_param[i]])
 	
+        print hidden_param[-1], type(hidden_param[-1])
+        print output_dim, type(output_dim)
 	w_o = init_weights([hidden_param[-1], output_dim])
 	bias[-1] = init_weights([output_dim])
 	
@@ -96,7 +99,7 @@ def run_mlp(
 
 	input_flag = INPUT_FLAG()
 	if opt == "mnist":
-		output_dim = 10
+		output_dim = 11
 		update_data_flag(input_flag, "", "", opt, output_dim)
 	else:
 		update_data_flag(input_flag, train_dir, test_dir, output_dim, mode = mode)
@@ -106,7 +109,9 @@ def run_mlp(
 
 	X = tf.placeholder("float", [None, input_dim])
 	Y = tf.placeholder("float", [None, output_dim])
-
+        
+        print "I am in run_mlp"
+        print "hidden_weights is ", hidden_weights, "output_dim is ", output_dim
 	w_hs, w_o, activation = model(X, input_dim, hidden_weights, output_dim)
 
 	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(activation, Y))
@@ -138,10 +143,11 @@ def run_mlp(
 		weights = sess.run(w_hs)
 		weights.append(sess.run(w_o))
 		for i in range(len(weights)):
-			weights[i] = weights[i].tolist()
-		# print weights
+			weights[i] = weights[i].T.tolist()
+		# print weights 
 		with open(saved_weights_path, 'w') as f:
-			json.dump({'weights':weights}, f)
+			pickle.dump(weights, f)
+
 	else:
 		fsock = open('error.log', 'w')
 		sys.stderr = fsock
@@ -149,7 +155,7 @@ def run_mlp(
 	out.close()
 
 def run_mlp_train(h_weights=[], lr = 0.001, it=500, train="", o_dim=2, model_path="", weights_path="", output=""):
-	run_mlp(hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
+	run_mlp(lr=lr, hidden_weights=h_weights, num_iter=it, train_dir=train, output_dim=o_dim, mode="train", saved_model_path=model_path, saved_weights_path=weights_path, output_file=output)
 
 def run_mlp_test(h_weights=[], test="", model_path="", o_dim=2, output=""):
 	run_mlp(hidden_weights=h_weights, test_dir=test, saved_model_path=model_path ,mode="test", output_dim=2, output_file=output)

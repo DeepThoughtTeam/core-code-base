@@ -58,13 +58,16 @@ def run_exp(name="", user_name="", weights="", train="", test="", learning_rate 
         urllib2.urlopen(request)
         return
 	
-    print "weights: "
-    print weights
+
+
     model_output = buildPath("model.ckpt", name, user_name)
     weights_output = buildPath("weights.pckl", name, user_name)
     train_output = buildPath("train_output.txt", name, user_name)
     test_output = buildPath("test_output.txt", name, user_name)
-
+    
+    print "I am in hello.py before train_thread"
+    print "num_iter=", num_iter, " out_dim=", out_dim
+    print "weights=", weights
     train_thread = Thread(target=run_mlp_train, args=(weights, learning_rate, num_iter, train_path, out_dim, model_output, weights_output, train_output))
 
     train_thread.start()
@@ -75,11 +78,13 @@ def run_exp(name="", user_name="", weights="", train="", test="", learning_rate 
     test_thread.start()
     test_thread.join()
 
+    print "Testing done..."
+    print weights_output
     register_openers()
-    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "status":"Completed"})
+    datagen, headers = multipart_encode({"token":"lafyyjveotnehialteikeniotjim", "username":user_name, "name":name, "model": open(model_output, "rb"), "train_out": open(train_output, "rb"), "test_out": open(test_output, "rb"), "weights" : open(weights_output, "rb"), "status":"Completed"})
     request = urllib2.Request("http://argonne.pc.cc.cmu.edu:80/nngarage/get-task-update", datagen, headers)
     # Actually do the request, and get the response
-    urllib2.urlopen(request)
+    print urllib2.urlopen(request).read()
 
 @app.route("/tensor/run", methods=['POST'])
 def run():
@@ -89,11 +94,13 @@ def run():
         weights = request.form["weights"]
         train = request.form["train"]
         test = request.form["test"]
-        learning_rate = request.form["learning_rate"] 
-        out_dim = request.form["out_dim"]
-        num_iter = request.form["num_iter"] 
+        learning_rate = float(request.form["learning_rate"])
+        out_dim = int(request.form["out_dim"])
+        num_iter = int(request.form["num_iter"])
         print test, train, weights, task_name
         try:
+          print "I am in run of the hello.py"
+          print "num_iter=", num_iter, "out_dim=", out_dim
           tensor_thread = Thread(target=run_exp, args=(task_name, user_name, weights, train, test, learning_rate, num_iter, out_dim))
           tensor_thread.daemon = True
           tensor_thread.start()
