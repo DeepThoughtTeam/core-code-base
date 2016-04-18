@@ -7,6 +7,7 @@ import tensorflow as tf
 import numpy as np
 import input_data
 import sys, json
+import pickle
 
 class INPUT_FLAG:
 	def __init__(self):
@@ -142,10 +143,11 @@ def run_mlp(
 		weights = sess.run(w_hs)
 		weights.append(sess.run(w_o))
 		for i in range(len(weights)):
-			weights[i] = weights[i].tolist()
-		# print weights
+			weights[i] = weights[i].T.tolist()
+		# print weights 
 		with open(saved_weights_path, 'w') as f:
-			json.dump({'weights':weights}, f)
+			pickle.dump(weights, f)
+
 	else:
 		fsock = open('error.log', 'w')
 		sys.stderr = fsock

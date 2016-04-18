@@ -17,7 +17,7 @@
 //   ];
 
 
-
+alert("/home/bicadmin/workspace-dt/core-code-base/webserver/static/nngarage/js");
 var nodes = [], lastNodeId = -1, links = [], layers = [];
 var params = [];
 var currentObject = null;

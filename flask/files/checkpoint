@@ -1,2 +1,2 @@
-model_checkpoint_path: "files/jw_task0257_model.ckpt"
-all_model_checkpoint_paths: "files/jw_task0257_model.ckpt"
+model_checkpoint_path: "files/Xiangzhu_Rock_model.ckpt"
+all_model_checkpoint_paths: "files/Xiangzhu_Rock_model.ckpt"
