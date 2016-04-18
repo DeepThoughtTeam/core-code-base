@@ -403,19 +403,26 @@ function restart() {
             // var content = "id: " + id + "\n" + "layer_idx: " + nodes[id]['layer_index'] + "\n" + "node_idx: " + nodes[id]['node_index'];
             //  Placeholder to request weights info
             
-            var task_name = document.getElementById("task_name").value;
+            var task_name = document.getElementById("task_name").innerHTML;
             var inlayer_node_idx = nodes[id]['node_index'];
             var layer_idx = nodes[id]['layer_index'];
             
             var content;
-            $.get("get-weights/" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/").done(function (data) {
-                content = data;
-            });
-
-            tooltip.html(content)
-                .style('left', (d3.event.pageX) + 'px')
-                .style('top', (d3.event.pageY) + 'px');
-
+	    $.ajax({
+		url: "get-weights/" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/",
+		async: false
+	    }).done(function (data) {
+		var res = "";
+		for (var i = 0; i< data['weights_4_single_node'].length; i++){
+		   res += data['weights_4_single_node'][i].toFixed(7) + "<br>"; 
+		}
+		    
+		content = res;
+	    });
+//            $.get("get-weights/" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/").done(function (data) {
+  //              content = data;
+    //        });
+       	tooltip.html(content).style('left', (d3.event.pageX) + 'px').style('top', (d3.event.pageY) + 'px');
         })
         .on('mouseout', function (d) {
             //  if(!mousedown_node || d === mousedown_node) return;
@@ -758,23 +765,26 @@ function viz_network(temp) {
     layers = [];
     lastNodeId = 0;
 
+
+    var x0 = 0; 
+    var stepx = width * 4 / 7 / (temp.length + 2);
     for (i = 0; i < temp.length; i++) {
+        var y0 = 0;
         cur_layer = [];
         len = parseInt(temp[i]);
+
+        stepy = height / (len + 2);
         for (j = 0; j < len; j++) {
             //node = {id: ++lastNodeId, reflexive: false};
-            node = {
-                id: ++lastNodeId,
-                reflexive: false,
-                x: 100 + i * 100,
-                y: 70 + j * 50,
-                node_index: j,
-                layer_index: i,
-                opacity: 1
-            };
+            node = {id: lastNodeId++, reflexive: false, x: x0 + stepx, y: y0 + stepy, layer: i, sequenceid: j, node_index:j, layer_index:i};
+
             nodes.push(node);
             cur_layer.push(node);
+
+            y0 = y0 + stepy;
+
         }
+        x0 = x0 + stepx;
         layers.push(cur_layer.slice());
         if (i > 0) {
             FullyConnect(layers[i - 1], layers[i]);
@@ -783,7 +793,7 @@ function viz_network(temp) {
     }
 }
 
-//var layers_links = [];
+layers_links = [];
 
 function createLinks(layer_source, layer_target) {
 

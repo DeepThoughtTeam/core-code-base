@@ -14,6 +14,9 @@ def run_exp(task_name="", user_name="", weights="", train="", test="", learning_
     params['learning_rate'] = learning_rate
     params['out_dim'] = out_dim
     params['num_iter'] = num_iter
-    print params
+    with open("/home/deepbic/workspace/core-code-base/webserver/tmp_data.txt", 'w') as f:
+        f.write("out_dim=" + str(params['out_dim']))
+        f.write("num_iter=" + str(params['num_iter']))
+
     r = requests.post(SOURCE_URL, data=params)
     return r

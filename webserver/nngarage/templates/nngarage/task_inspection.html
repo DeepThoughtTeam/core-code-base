@@ -89,7 +89,8 @@
         Network Visualization
       </div>
       <div class="panel-body">
-        <div id="draw" oncontextmenu="return false;">
+        <div id="draw">
+	  <!--
           <svg width="700" height="500" class="">
             <g class="brush" style="pointer-events: all; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
               <rect class="background" x="0" width="700" y="0" height="500"
@@ -247,6 +248,7 @@
               <path class="link" d="M405.3665631459995,309.266873708001L492.3973688765007,135.20526224699856"
                     style="marker-end: url(&quot;#end-arrow&quot;);"></path>
             </g>
+
             <g>
               <g transform="translate(100,70)">
                 <circle class="node" r="12" selected="false"
@@ -338,10 +340,10 @@
                         style="fill: rgb(127, 127, 127); stroke: rgb(88, 88, 88);"></circle>
                 <text x="0" y="4" class="id">18</text>
               </g>
-            </g>
-          </svg>
-        </div>
-      </div>
+            </g> 
+          </svg> 
+        </div> 
+      </div> -->
     </div>
   </div>
 
@@ -359,10 +361,10 @@
 <!-- Custom Theme JavaScript -->
 <script src="{% static 'nngarage/js/sb-admin-2.js' %}"></script>
 <script src="{% static 'nngarage/js/graphic.js' %}"></script>
-<!--<script>
-  layers = [2, 3, 5, 6, 2];
+<script>
+  layers = {{parameter}};
   viz_network(layers);
-</script> -->
+</script>
 
 <div style="position: absolute; padding: 0px 10px; background: white none repeat scroll 0% 0%; opacity: 0;"
      class="tooltip"></div>
