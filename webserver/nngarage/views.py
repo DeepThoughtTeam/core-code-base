@@ -147,7 +147,7 @@ def add_task(request):
 
     r = run_exp(task_name, user_name, para_file_name, request.FILES['train_in'].name,
                 request.FILES['test_in'].name, learning_rate, out_dim, num_iter)
-    if (r.status_code != 200):
+    if r.status_code != 200:
         raise Http404
 
     context['task_creation_status_feedback'] = "New task is added successfully."

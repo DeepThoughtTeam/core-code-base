@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^$', 'dashboard.views.index', name='index'),
     url(r'^app-server/', 'dashboard.views.app_server', name='app_server'),
     url(r'^send-net-info/', 'dashboard.views.proc_net_info', name='send_net_info'),
+    url(r'^about/', 'dashboard.views.about', name='about'),
 ]
