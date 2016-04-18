@@ -141,7 +141,7 @@ def add_task(request):
     para_file_name = para_file_name.split("/")[-1]
 
     r = run_exp(task_name, user_name, para_file_name, request.FILES['train_in'].name,
-                request.FILES['test_in'].name, learning_rate, num_iter, out_dim)
+                request.FILES['test_in'].name, learning_rate, out_dim, num_iter)
     if (r.status_code != 200):
         raise Http404
 
