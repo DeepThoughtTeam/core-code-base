@@ -1,7 +1,8 @@
+{% load staticfiles %}
 <!DOCTYPE html>
-<!-- saved from url=(0066)http://argonne.pc.cc.cmu.edu/nngarage/get-task-detailed-info/Rock/ -->
-<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html>
+<head lang="en">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,46 +34,50 @@
 
 </head>
 <body>
-<div id="wrapper" style="margin-left: 11%; margin-top: 2%">
+<div id="wrapper">
   <div id="metrics">
     <div class="panel panel-default">
-      <div class="panel-heading">Results</div>
+      <div class="panel-heading">Metrics</div>
       <div class="panel-body">
-        <div class="row">
-          <div class="col-md-6">
-            <label style="margin-top: 7%;"> Task Name: </label>
-          </div>
-          <div class="col-md-6">
-            <p id="task_name" style="margin-top: 7%; margin-left: -5%">{{task_name}}</p>
-          </div>
-      </div>
+        <p class="lead" >Task Name: <p id="task_name" >{{task_name}}</p> </p>
 
-      <HR style="border:3 solid; color: #C3C0C0;" important! width="100%" SIZE=3>
+        <p class="lead">Model</p>
+        <p>Model file:
+          <a href="/nngarage/get-file/{{para_name}}">{{para_name}}</a>
+        </p>
+        <p class="lead">Parameters</p>
+          <p>Learning rate: <span>{{learning_rate}}</span></p>
+          <p>Number of iterations: <span>{{num_iter}}</span></p>
+          <p>Output dimension: <span>{{out_dim}}</span></p>
 
-        <label> Parameters: </label>
-          <p style="color: #3c763d; margin-left: 4%;">Learning rate: <span>{{learning_rate}}</span></p>
-          <p style="color: #3c763d; margin-left: 4%;">Number of iterations: <span>{{num_iter}}</span></p>
-          <p style="color: #3c763d; margin-left: 4%;">Output dimension: <span>{{out_dim}}</span></p>
-
-       <HR style="border:3 solid; color: #C3C0C0;" important! width="100%" SIZE=3>
-
-        <label style="margin-top: 4%;"> Train In Dataset: <a href="/nngarage/get-file/{{train_in_name}}">{{train_in_name}}</a></label>
-
-        <label style="margin-top: 4%;">Test In Dataset:
-          <a href="/nngarage/get-file/{{test_in_name}}">{{test_in_name}}</a>
-        </label>
-
-        <HR style="border:3 solid; color: #C3C0C0;" important! width="100%" SIZE=3>
-
-        <label style="margin-top: 4%;">Model:
+        <p>Model:
           <a href="/nngarage/download-file/{{model_name}}">{{model_name}}</a>
-        </label>
+        </p>
 
-        <label style="margin-top: 4%;">Train Output: <a href="/nngarage/get-file/{{train_out_name}}">{{train_out_name}}</a></label>
+        <p class="lead">Train In</p>
+        <p>Dataset:
+          <a href="/nngarage/get-file/{{train_in_name}}">{{train_in_name}}</a>
+        </p>
 
-        <label style="margin-top: 4%;">Test Output:
+        <p class="lead">Train Out</p>
+        <p>Dataset:
+          <a href="/nngarage/get-file/{{train_out_name}}">{{train_out_name}}</a>
+        </p>
+        <p>Elapsed time:
+          <span id="time">{{elasped_time}}</span>
+        </p>
+
+
+        <p class="lead">Test In</p>
+        <p>Dataset:
+          <a href="/nngarage/get-file/{{test_in_name}}">{{test_in_name}}</a>
+        </p>
+
+        <p class="lead">Test Out</p>
+        <p>Dataset:
           <a href="/nngarage/get-file/{{test_out_name}}">{{test_out_name}}</a>
-        </label>
+        </p>
+
 
       </div>
     </div>
@@ -84,8 +89,10 @@
         Network Visualization
       </div>
       <div class="panel-body">
-        <div id="draw" oncontextmenu="return false;">
-        </div>
+        <div id="draw">
+
+    </div>
+  </div>
 
 </div>
 
@@ -109,6 +116,5 @@
 
 
 
-
-
-</div></div></body></html>
+</body>
+</html>
