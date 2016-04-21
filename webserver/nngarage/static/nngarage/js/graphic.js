@@ -402,11 +402,11 @@ function restart() {
             var id = d.id;
             // var content = "id: " + id + "\n" + "layer_idx: " + nodes[id]['layer_index'] + "\n" + "node_idx: " + nodes[id]['node_index'];
             //  Placeholder to request weights info
-            
+
             var task_name = document.getElementById("task_name").innerHTML;
             var inlayer_node_idx = nodes[id]['node_index'];
             var layer_idx = nodes[id]['layer_index'];
-            
+
             var content;
 	    $.ajax({
 		url: "get-weights/" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/",
@@ -414,9 +414,9 @@ function restart() {
 	    }).done(function (data) {
 		var res = "";
 		for (var i = 0; i< data['weights_4_single_node'].length; i++){
-		   res += data['weights_4_single_node'][i].toFixed(7) + "<br>"; 
+		   res += data['weights_4_single_node'][i].toFixed(7) + "<br>";
 		}
-		    
+
 		content = res;
 	    });
 //            $.get("get-weights/" + task_name + "/" + layer_idx + "/" + inlayer_node_idx + "/").done(function (data) {
@@ -759,14 +759,14 @@ function generateLayers() {
     }
 }
 
-function viz_network(temp) {
+function viz_network(temp, out_dim) {
     nodes = [];
     cur_layer = [];
     layers = [];
     lastNodeId = 0;
+    temp.push(out_dim);
 
-
-    var x0 = 0; 
+    var x0 = 0;
     var stepx = width * 4 / 7 / (temp.length + 2);
     for (i = 0; i < temp.length; i++) {
         var y0 = 0;
