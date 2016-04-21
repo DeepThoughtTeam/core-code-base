@@ -1,9 +1,8 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<!-- saved from url=(0049)http://localhost:63342/dashboard/pages/creat.html -->
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head lang="en">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- saved from url=(0046)http://argonne.pc.cc.cmu.edu/nngarage/add-task -->
+<html lang="en" xmlns="http://www.w3.org/1999/html"><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,85 +48,100 @@
   </style>
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" style="margin-left: 11%; margin-top: 2%">
   <div id="metrics">
     <div class="panel panel-default">
-      <div class="panel-heading">Data set</div>
+      <div class="panel-heading">Model Details</div>
       <div class="panel-body">
-        {{ task_form_error }}
+
         <form role="form" action="{% url 'add_task' %}" method="post" enctype="multipart/form-data">
 
           <div class="form-group">
 
             <label class="control-label" for="task_name">Task name</label>
-            <input class="form-control"  id = "task_name" type="text" name="name">
+            <input class="form-control" id="task_name" type="text" name="name">
 
-            <p class="lead">Train set</p>
-            <label>File input</label>
+            <!-- <p class="lead">Train set</p> -->
+            <label style="margin-top: 7%;"> Train Set Input </label>
             <div class="form-group">
               <input type="file" name="train_in">
             </div>
           </div>
 
           <div class="form-group">
-            <p class="lead">Test set</p>
-            <label>File input</label>
+            <!-- <p class="lead">Test set</p> -->
+            <label>Test Set Input</label>
             <div class="form-group">
               <input type="file" name="test_in">
             </div>
           </div>
 
           {% csrf_token %}
+
+
+          <div class="form-group has-success">
+              <label style="margin-top: 5%;">Model Parameters</label> </br>
+
+              <label class="control-label" for="learning_rate">Learning rate</label>
+              <input type="text" class="form-control" id="learning_rate" name="learning_rate" style="height: 25px;">
+              <label class="control-label" for="num_iters">Number of iterations</label>
+              <input type="text" class="form-control" id="num_iters" name="num_iter" style="height: 25px;">
+              <label class="control-label" for="out_dim">Output dimension</label>
+              <input type="text" class="form-control" id="out_dim" name="out_dim" style="height: 25px;">
+          </div>
+
+          <HR style="border:3 solid; color: #C3C0C0;" important! width="100%" SIZE=3>
+          <p class="lead" style="font-size: 18px;">Create Netural Network:</p>
+
+
+            <div class="form-group has-success">
+              <p>
+                <label class="control-label" for="gen_layers">1. Text Input: </label>
+                <div class="row">
+                  <div class="col-md-7">
+                    <input type="text" class="form-control" id="gen_layers" style="width: 100%; border-color: #333"> </div>
+                  <div class="col-md-5">
+                    <button type="button" class="btn btn-default" onclick="generateLayers()" style="width: 110%;">Generate</button> </div>
+              </div>
+              </p>
+              <label class="control-label" for="gen_layers">2. Connect Layers: </label>
+              </br>
+              <label class="control-label" for="view_select" style="color: #333">  Selected Nodes</label>
+              <pre id="view_select"></pre>
+              <label class="control-label" for="view_layers" style="color: #333">  Layers</label>
+              <pre id="view_layers"></pre>
+
+            </div>
+
             <div class="form-group">
-                <p class="lead">Use existing model</p>
+              <label class="control-label" for="gen_layers" style="color: #3c763d;"> 3. Use Existing Model: </label>
+            </br>
                 <label>File input</label>
                 <div class="form-group">
                   <input type="file" name="model_in">
                 </div>
             </div>
 
-            <div class="form-group has-success">
-              <p class="lead">Design new Model:</p>
-              <p>
-                <label class="control-label" for="gen_layers">Create NN from text input</label>
-                <input type="text" class="form-control" id="gen_layers">
-                <button type="button" class="btn btn-default" onclick="generateLayers()">Generate</button>
-              </p>
-              <label class="control-label" for="view_select">Selected Nodes</label>
-              <pre id="view_select"></pre>
-              <label class="control-label" for="view_layers">Layers</label>
-                <pre id="view_layers"></pre>
-              <button type="button" class="btn btn-default" onclick="validateNetwork()">Validate Model</button>
-              <button type="button" class="btn btn-default" onclick="saveModel()">Save Model</button>
-                <br />
-              <label class="control-label" for="view_json">Model</label>
+            <HR style="border:3 solid; color: #C3C0C0;" important! width="100%" SIZE=3>
 
-              <textarea  class="form-control" type = "text" id="view_json" name="parameter"></textarea>
+            <button type="button" class="btn btn-default" onclick="saveModel()">Save Model</button> </div>
+            <textarea class="form-control" type="text" id="view_json" name="parameter" style="width: 80%; margin-left: 5%;"></textarea>
+            <button type="submit" class="btn btn-default" style="margin-top: 3%; margin-left: 4%; margin-bottom: 3%;">Submit Task</button>
 
-            </div>
-            <div class="form-group has-success">
-                <p class="lead">Set parameters:</p>
-                <label class="control-label" for="learning_rate">Learning rate</label>
-                <input type="text" class="form-control" id="learning_rate" name="learning_rate">
-                <label class="control-label" for="num_iters">Number of iterations</label>
-                <input type="text" class="form-control" id="num_iters" name="num_iter">
-                <label class="control-label" for="out_dim">Output dimension</label>
-                <input type="text" class="form-control" id="out_dim" name="out_dim">
-            </div>
-            <button type="submit" class="btn btn-default">Submit Task</button>
         </form>
           </div>
     </div>
   </div>
 
   <div id="vis">
-    <div class="panel panel-default">
+    <div class="panel panel-default"  style="width: 100%; margin-left: 10%;">
       <div class="panel-heading">
         Network Visualization
       </div>
       <div class="panel-body">
-        <div id="draw">
-        </div>
+        <div id="draw" oncontextmenu="return false;">
+
+      </div>
       </div>
     </div>
   </div>
@@ -149,5 +163,4 @@
 <script src="{% static 'nngarage/js/graphic.js' %}"></script>
 
 
-</body>
-</html>
+</body></html>
